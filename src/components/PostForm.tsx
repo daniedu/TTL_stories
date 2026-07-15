@@ -14,6 +14,7 @@ export default function PostForm({
 }) {
   const { user } = useAuth();
   const [text, setText] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [sending, setSending] = useState(false);
   const [visibility, setVisibility] = useState<Visibility>("public");
 
@@ -32,6 +33,7 @@ export default function PostForm({
         user.uid,
         user.displayName,
         visibility,
+        imageUrl || undefined,
       );
       setText("");
       onClose();
@@ -97,6 +99,22 @@ export default function PostForm({
               rows={6}
               className="w-full bg-transparent border-2 border-ink-black p-3 focus:outline-none focus:bg-white font-body-lg text-body-lg resize-none text-ink-black placeholder:text-ink-black/30"
             />
+            <div className="mt-3 flex items-center gap-2">
+              <span className="material-symbols-outlined text-ink-black/40 text-lg">image</span>
+              <input
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                placeholder="ENCLOSE IMAGE URL (OPTIONAL)"
+                className="flex-1 bg-transparent border-b-2 border-ink-black/30 focus:border-airmail-blue px-2 py-1 font-metadata text-metadata text-ink-black placeholder:text-ink-black/30 focus:outline-none transition-colors"
+              />
+            </div>
+            {imageUrl && (
+              <div className="mt-2 ml-8">
+                <div className="bg-white p-1 pb-3 border border-ink-black inline-block shadow-sm">
+                  <img src={imageUrl} alt="" className="w-20 h-16 object-cover border border-ink-black/10" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

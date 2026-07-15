@@ -13,6 +13,7 @@ export interface Story {
   authorId: string;
   authorName: string | null;
   visibility: Visibility;
+  imageUrl?: string;
   reports?: number;
   sharedWith?: string[];
 }

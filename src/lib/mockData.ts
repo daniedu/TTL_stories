@@ -107,6 +107,9 @@ function generateAll(isGlobal: boolean) {
       authorId: author.uid,
       authorName: author.name,
       visibility: "public" as const,
+      imageUrl: i % 4 === 0
+        ? "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80"
+        : undefined,
       reports: 0,
     };
   });

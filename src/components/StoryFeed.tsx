@@ -64,6 +64,21 @@ function StoryCard({ story, userId }: { story: Story; userId: string | null }) {
         </div>
       </div>
 
+      {story.imageUrl && (
+        <div className="mb-3 -ml-1">
+          <div className="bg-white p-2 pb-5 border border-ink-black inline-block -rotate-1 shadow-sm hover:rotate-0 transition-transform">
+            <img
+              src={story.imageUrl}
+              alt=""
+              className="w-28 h-24 md:w-32 md:h-28 object-cover border border-ink-black/10 grayscale"
+            />
+            <p className="font-metadata text-[8px] text-center text-ink-black/40 mt-1 uppercase">
+              Attachment
+            </p>
+          </div>
+        </div>
+      )}
+
       <Link href={`/story/${story.id}`}>
         <p className="font-body-md text-body-md text-ink-black leading-relaxed mb-4 line-clamp-4 hover:text-airmail-blue transition-colors">
           {story.content}

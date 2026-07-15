@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from "@/lib/auth";
 import { useStories } from "@/hooks/useStories";
@@ -26,6 +27,7 @@ function AppInner() {
   const [tab, setTab] = useState<"map" | "feed">("map");
   const [sessionMode, setSessionMode] = useState<"public" | "private">("public");
   const [showCompose, setShowCompose] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const center = sessionMode === "public" && mode === "local" ? userPosition : null;
   const radius = mode === "local" ? RADIUS_LOCAL : RADIUS_GLOBAL;
@@ -58,12 +60,17 @@ function AppInner() {
     <div className="h-dvh flex flex-col bg-background text-ink-black font-body-md overflow-hidden">
       <header className="bg-background border-b-2 border-ink-black flex items-center justify-between px-margin-mobile md:px-8 h-16 shrink-0 z-50">
         <div className="flex items-center gap-4">
-          <span className="material-symbols-outlined text-ink-black text-2xl hover:bg-surface-container-highest p-2 transition-colors cursor-pointer hidden md:block">
+          <button
+            onClick={() => setDrawerOpen(!drawerOpen)}
+            className="material-symbols-outlined text-ink-black text-2xl hover:bg-surface-container-highest p-2 transition-colors cursor-pointer"
+          >
             menu
-          </span>
-          <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-ink-black uppercase tracking-tighter">
-            TTL STORIES
-          </h1>
+          </button>
+          <Link href="/app">
+            <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-ink-black uppercase tracking-tighter">
+              TTL STORIES
+            </h1>
+          </Link>
         </div>
         <nav className="hidden md:flex items-center gap-1 h-full">
           <button
@@ -192,6 +199,81 @@ function AppInner() {
         </section>
       </main>
 
+      <aside
+        className={`fixed top-0 left-0 h-full w-72 bg-paper-cream border-r-4 border-ink-black z-[100] flex flex-col transition-transform duration-300 ${
+          drawerOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="p-6 border-b-2 border-ink-black">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-12 rounded-full border-2 border-ink-black bg-surface-dim flex items-center justify-center font-headline-md text-ink-black">
+              {user?.displayName?.charAt(0).toUpperCase() || "?"}
+            </div>
+            <div>
+              <h2 className="font-headline-md text-headline-md text-stamp-red uppercase">{user?.displayName || "ANONYMOUS"}</h2>
+              <p className="font-metadata text-metadata">OFFICE NO. {Math.floor(Math.random() * 999)}</p>
+            </div>
+          </div>
+          <p className="font-label-caps text-[10px] text-postmark-gray">EST. 2024</p>
+        </div>
+        <nav className="flex-1 divide-y divide-ink-black overflow-y-auto">
+          <Link
+            href="/app"
+            onClick={() => setDrawerOpen(false)}
+            className="flex items-center gap-4 px-6 py-4 text-ink-black hover:bg-surface-container-highest transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 01-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 001.183 1.981l6.478 3.488m8.839 2.51l-4.66-2.51m0 0l-1.023-.55a2.25 2.25 0 00-2.134 0l-1.022.55m0 0l-4.661 2.51m16.5 1.615a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V8.844a2.25 2.25 0 011.183-1.981l7.5-4.039a2.25 2.25 0 012.134 0l7.5 4.039a2.25 2.25 0 011.183 1.98V19.5z" />
+            </svg>
+            <span className="font-body-md text-body-md">POSTBOX</span>
+          </Link>
+          <Link
+            href="/app"
+            onClick={() => { setDrawerOpen(false); setTab("feed"); }}
+            className="flex items-center gap-4 px-6 py-4 text-ink-black hover:bg-surface-container-highest transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+            </svg>
+            <span className="font-body-md text-body-md">TELEGRAMS</span>
+          </Link>
+          <Link
+            href="/app/profile"
+            onClick={() => setDrawerOpen(false)}
+            className="flex items-center gap-4 px-6 py-4 bg-secondary text-white font-bold border-y-2 border-ink-black hover:bg-stamp-red transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+            <span className="font-body-md text-body-md">LEDGER</span>
+          </Link>
+          <a
+            href="#"
+            className="flex items-center gap-4 px-6 py-4 text-ink-black hover:bg-surface-container-highest transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+            </svg>
+            <span className="font-body-md text-body-md">ARCHIVE</span>
+          </a>
+        </nav>
+        <div className="p-4 border-t-2 border-ink-black text-center">
+          <button
+            onClick={() => setDrawerOpen(false)}
+            className="font-label-caps text-label-caps text-ink-black border-2 border-ink-black px-4 py-2 w-full hover:bg-ink-black hover:text-white transition-all active:scale-95"
+          >
+            CLOSE LEDGER
+          </button>
+        </div>
+      </aside>
+
+      {drawerOpen && (
+        <div
+          className="fixed inset-0 bg-ink-black/50 z-[90] backdrop-blur-sm"
+          onClick={() => setDrawerOpen(false)}
+        />
+      )}
+
       <nav className="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-2 bg-paper-cream border-t-2 border-ink-black">
         <button
           onClick={() => setTab("map")}
@@ -219,6 +301,15 @@ function AppInner() {
           </svg>
           <span className="font-label-caps text-[10px] mt-1">FEED</span>
         </button>
+        <Link
+          href="/app/profile"
+          className={`flex flex-col items-center justify-center p-2 mx-1 transition-all active:scale-95 bg-airmail-blue text-on-primary border-2 border-ink-black`}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+          </svg>
+          <span className="font-label-caps text-[10px] mt-1">PROFILE</span>
+        </Link>
         <button
           onClick={() => setMode(mode === "local" ? "global" : "local")}
           className={`flex flex-col items-center justify-center p-2 mx-1 transition-all active:scale-95 ${

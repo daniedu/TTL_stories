@@ -29,6 +29,7 @@ export async function createStory(
   authorId: string,
   authorName: string | null,
   visibility: Visibility = "public",
+  imageUrl?: string,
 ) {
   if (isMock()) return;
   const db = getDb();
@@ -38,7 +39,7 @@ export async function createStory(
     now.nanoseconds,
   );
 
-  await addDoc(collection(db, "stories"), {
+  const data: Record<string, unknown> = {
     content,
     location: new GeoPoint(lat, lng),
     geohash: encodeGeohash(lat, lng),
@@ -48,7 +49,10 @@ export async function createStory(
     authorId,
     authorName,
     visibility,
-  });
+  };
+  if (imageUrl) data.imageUrl = imageUrl;
+
+  await addDoc(collection(db, "stories"), data);
 }
 
 export async function getStory(id: string): Promise<Story | null> {
