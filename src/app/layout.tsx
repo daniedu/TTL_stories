@@ -73,6 +73,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/icons/icon.svg" />
         <link rel="apple-touch-icon" href="/icons/icon.svg" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" />
       </head>
       <body className="overscroll-none">{children}</body>
     </html>

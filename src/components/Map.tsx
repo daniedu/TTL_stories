@@ -8,27 +8,25 @@ import { useEffect } from "react";
 import type { Story } from "@/types";
 
 const defaultIcon = L.divIcon({
-  className: "postmark-marker",
-  html: `<div style="width:32px;height:32px;border:2px double #1A1A1B;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(26,26,27,0.1);transform:rotate(-5deg);">
-    <svg xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;color:#F5F5DC" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-    </svg>
+  className: "",
+  html: `<div style="width:28px;height:28px;background:white;border:2px solid #1A1A1B;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 0px #1A1A1B;cursor:pointer;transition:transform 0.2s;">
+    <div style="width:10px;height:10px;background:#00416A;border-radius:50%;"></div>
   </div>`,
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-  popupAnchor: [0, -36],
+  iconSize: [28, 28],
+  iconAnchor: [14, 14],
+  popupAnchor: [0, -18],
 });
 
 const selectedIcon = L.divIcon({
-  className: "selected-marker",
-  html: `<div style="width:40px;height:40px;background:#ba002a;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 0px 0px #410008;">
-    <svg xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;color:white" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+  className: "",
+  html: `<div style="width:36px;height:36px;background:#C60C30;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 0px #410008;cursor:pointer;">
+    <svg xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;color:white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
     </svg>
   </div>`,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
-  popupAnchor: [0, -44],
+  iconSize: [36, 36],
+  iconAnchor: [18, 18],
+  popupAnchor: [0, -22],
 });
 
 function FlyToCenter({ center }: { center: [number, number] | null }) {
@@ -97,8 +95,13 @@ export default function Map({
         >
           <Popup>
             <div className="font-body-md text-ink-black max-w-[200px]">
-              <p className="font-headline-md text-sm mb-1">{story.authorName || "ANONYMOUS"}</p>
-              <p className="text-sm">{story.content.slice(0, 100)}</p>
+              <p className="font-headline-md text-sm mb-1">
+                {story.authorName || "ANONYMOUS"}
+              </p>
+              <p className="text-sm line-clamp-3">{story.content}</p>
+              <p className="font-metadata text-xs text-ink-black/50 mt-1">
+                {story.visibility.toUpperCase()}
+              </p>
             </div>
           </Popup>
         </Marker>
