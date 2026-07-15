@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TTL STORIES - STATION MASTER LEDGER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#474647",
+                        "surface-variant": "#e4e4cc",
+                        "airmail-blue": "#00416A",
+                        "surface-bright": "#fbfbe2",
+                        "secondary-fixed": "#ffdad9",
+                        "on-surface-variant": "#42474e",
+                        "outline": "#72777f",
+                        "surface-container-low": "#f5f5dc",
+                        "paper-cream": "#F5F5DC",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#303221",
+                        "on-error": "#ffffff",
+                        "tertiary": "#282829",
+                        "surface-dim": "#dbdcc3",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#cfe5ff",
+                        "tertiary-container": "#3e3e3f",
+                        "primary-container": "#00416a",
+                        "on-secondary-fixed-variant": "#92001f",
+                        "background": "#fbfbe2",
+                        "surface-container-highest": "#e4e4cc",
+                        "on-surface": "#1b1d0e",
+                        "surface-container": "#efefd7",
+                        "stamp-red": "#C60C30",
+                        "outline-variant": "#c2c7cf",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#e0273f",
+                        "secondary": "#ba002a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#31628d",
+                        "on-tertiary-container": "#aba9aa",
+                        "secondary-fixed-dim": "#ffb3b2",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c8c6c7",
+                        "on-primary-container": "#7faddc",
+                        "tertiary-fixed": "#e5e2e3",
+                        "on-secondary-fixed": "#410008",
+                        "inverse-on-surface": "#f2f2d9",
+                        "on-tertiary": "#ffffff",
+                        "ink-black": "#1A1A1B",
+                        "on-primary-fixed-variant": "#114a73",
+                        "surface": "#fbfbe2",
+                        "on-primary-fixed": "#001d33",
+                        "primary": "#002a48",
+                        "on-background": "#1b1d0e",
+                        "primary-fixed-dim": "#9ccbfb",
+                        "inverse-primary": "#9ccbfb",
+                        "on-tertiary-fixed": "#1b1b1c",
+                        "on-secondary-container": "#fffbff",
+                        "surface-container-high": "#eaead1",
+                        "postmark-gray": "#A6A697"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "container-max": "640px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Space Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-md": ["Space Mono"],
+                        "headline-lg-mobile": ["Space Mono"],
+                        "body-lg": ["Courier Prime"],
+                        "body-md": ["Courier Prime"],
+                        "metadata": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "metadata": ["11px", { "lineHeight": "14px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .perforated-edge {
+            mask-image: radial-gradient(circle at 100% 50%, transparent 6px, black 6px);
+            mask-size: 100% 20px;
+            mask-repeat: repeat-y;
+        }
+        .stamp-texture {
+            opacity: 0.15;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+        .paper-grain {
+            background-color: #F5F5DC;
+            background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+        }
+        .ink-bleed {
+            filter: blur(0.3px) contrast(1.2);
+        }
+        .rubber-stamp {
+            border: 3px solid;
+            padding: 4px 8px;
+            text-transform: uppercase;
+            font-weight: 900;
+            display: inline-block;
+            transform: rotate(-5deg);
+            mix-blend-mode: multiply;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+    </style>
+</head>
+<body class="bg-surface-dim font-body-md text-ink-black min-h-screen">
+<!-- Main Ledger Content -->
+<main class="min-h-screen paper-grain pb-20">
+<!-- Top App Bar with integrated Navigation -->
+<header class="flex justify-between items-center px-margin-mobile w-full min-h-[64px] bg-background border-b-2 border-ink-black sticky top-0 z-40">
+<div class="flex items-center gap-6">
+<h1 class="font-headline-lg font-bold uppercase tracking-tighter text-ink-black mr-4 hidden lg:block">TTL STORIES</h1>
+<nav class="hidden md:flex items-center gap-4">
+<a class="flex items-center gap-2 px-3 py-2 transition-colors duration-75 text-ink-black hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined scale-75">mail</span>
+<span class="font-label-caps text-[10px]">POSTBOX</span>
+</a>
+<a class="flex items-center gap-2 px-3 py-2 transition-colors duration-75 text-ink-black hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined scale-75">send</span>
+<span class="font-label-caps text-[10px]">TELEGRAMS</span>
+</a>
+<a class="flex items-center gap-2 px-3 py-2 transition-colors duration-75 bg-secondary text-on-secondary font-bold border border-ink-black" href="#">
+<span class="material-symbols-outlined scale-75">import_contacts</span>
+<span class="font-label-caps text-[10px]">LEDGER</span>
+</a>
+<a class="flex items-center gap-2 px-3 py-2 transition-colors duration-75 text-ink-black hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined scale-75">inventory_2</span>
+<span class="font-label-caps text-[10px]">ARCHIVE</span>
+</a>
+</nav>
+<button class="md:hidden active:translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-ink-black">menu</span>
+</button>
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-ink-black uppercase tracking-tighter absolute left-1/2 -translate-x-1/2 whitespace-nowrap">LEDGER: STATION MASTER</span>
+<div class="flex items-center gap-4">
+<div class="hidden sm:block text-right">
+<p class="font-metadata text-ink-black opacity-70 text-[9px] leading-none uppercase">OFFICE 402</p>
+<p class="font-metadata text-stamp-red font-bold text-[10px]">STATION MASTER</p>
+</div>
+<button class="active:translate-y-0.5 transition-transform flex items-center">
+<div class="w-10 h-10 border border-ink-black bg-white overflow-hidden">
+<img class="w-full h-full object-cover grayscale" data-alt="Portrait of station master" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3o7ksWsTVzZ4Ft8cEtXnBuXLXmb_x3d3EL2ZHEgxjt7TJdRZhLSYvPEDrjU_Vaoac6E8KBBhnvQSvlvlEuUzbeq16mUlYEte6KXUwO1BfXgos0Q2q6IwQbBOkGkI56qkmbpz3R8FWVgyv682N3eWFUj9PkP_C8c8RRdXwq2lnnHyM1VSaprIwslWQ0HxCQfKN4Qhn4VhAWsKk8rwQV7w5B1SEcqcfa1VOgQ9jORjUHWPEKRc9TtZPjA_HWIprlMC0Q6lkXRGXaZRc"/>
+</div>
+</button>
+</div>
+</header>
+<div class="max-w-[1100px] mx-auto p-8 lg:p-16">
+<div class="mb-12 border-b-2 border-ink-black pb-8 flex flex-col md:flex-row gap-8 items-end">
+<div class="relative shrink-0">
+<div class="w-32 h-32 border-2 border-ink-black p-1 bg-white rotate-[-2deg] shadow-sm">
+<img class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_oJSHE_1kbTjCWP9Q9nDZTJcPK_eI9ldEOWlOAVCBacV7die28XxXDKbAfrSn4UPQl5HxI0Q0h8acLWtkhDZCXb0WXj9Zj_Jv6ITq6mDClLc8oillTn_mKouS8KmKj5R45Y2ooBaAkKA9umhHYe2L8ZXkL4cVzDseckO3AHcVkH1jZRUuqMrH-23RYE857fb4X0SVDLL9qDRZEg4i-T7bMwA4McxDFojNegkjzBR9w_B4e6eYlC1L_CgEloB_XseCgveQ8SOue168"/>
+</div>
+<div class="absolute -bottom-2 -right-4 rubber-stamp border-stamp-red text-stamp-red text-[10px] rotate-12 bg-surface-dim px-2">VERIFIED ID</div>
+</div>
+<div class="flex-1">
+<h1 class="font-headline-lg text-5xl tracking-tighter uppercase mb-2">Station Master</h1>
+<div class="flex flex-wrap gap-x-6 gap-y-2 font-metadata text-xs uppercase opacity-70">
+<span>Hub: Main Post Office</span>
+<span>Since: March 1924</span>
+<span class="text-airmail-blue font-bold">● Active Duty</span>
+</div>
+<p class="mt-4 font-body-md italic max-w-xl">"The ledger remains the only true witness to the correspondence that flows through these halls. Every stamp is a story, every seal a secret kept."</p>
+</div>
+</div>
+<!-- STATISTICS LEDGER TABLE -->
+<section class="mb-16">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-stamp-red">edit_note</span>
+<h3 class="font-headline-md uppercase">Journal Summary</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="relative p-4 border border-ink-black/20 bg-white/50 rotate-1">
+<p class="font-metadata text-[10px] uppercase opacity-50 mb-1">Volume Dispatched</p>
+<p class="font-headline-lg text-3xl">1,204</p>
+<div class="absolute top-2 right-2 opacity-10"><span class="material-symbols-outlined">mail</span></div>
+</div>
+<div class="relative p-4 border border-ink-black/20 bg-white/50 -rotate-1">
+<p class="font-metadata text-[10px] uppercase opacity-50 mb-1">Regions Mapped</p>
+<p class="font-headline-lg text-3xl">42</p>
+<div class="absolute top-2 right-2 opacity-10"><span class="material-symbols-outlined">map</span></div>
+</div>
+<div class="relative p-4 border border-ink-black/20 bg-white/50 rotate-2">
+<p class="font-metadata text-[10px] uppercase opacity-50 mb-1">Archival Requests</p>
+<p class="font-headline-lg text-3xl">3,982</p>
+<div class="absolute top-2 right-2 opacity-10"><span class="material-symbols-outlined">inventory_2</span></div>
+</div>
+</div>
+</section>
+<!-- DISPATCH ARCHIVES (DUAL COLUMN) -->
+<section>
+<div class="flex justify-between items-center mb-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-airmail-blue">history_edu</span>
+<h3 class="font-headline-md uppercase">Correspondence Log</h3>
+</div>
+<button class="font-metadata underline uppercase text-xs">Request Full Archive</button>
+</div>
+<div class="relative space-y-12 before:absolute before:left-8 before:top-0 before:bottom-0 before:w-px before:bg-ink-black/10">
+<div class="relative pl-20">
+<div class="absolute left-6 top-4 w-4 h-4 rounded-full bg-airmail-blue border-4 border-surface-dim z-10"></div>
+<div class="bg-white border border-ink-black p-6 shadow-sm max-w-2xl relative">
+<div class="absolute -top-3 -right-3 w-12 h-12 bg-stamp-red/5 border border-stamp-red/20 rounded-full flex items-center justify-center rotate-12">
+<span class="material-symbols-outlined text-stamp-red opacity-40">verified</span>
+</div>
+<div class="flex justify-between mb-2 font-metadata text-[10px] opacity-50"><span>LOG #4928</span><span>12 OCT 1924</span></div>
+<h4 class="font-headline-md text-lg mb-2">THE MIDNIGHT TRAIN TO ZURICH</h4>
+<p class="font-body-md text-sm leading-relaxed">The rain was heavy against the frosted glass of the carriage. We carried only the blueprints and a shared silence that spoke louder than the engine's roar...</p>
+</div>
+</div>
+<div class="relative pl-20">
+<div class="absolute left-6 top-4 w-4 h-4 rounded-full bg-stamp-red border-4 border-surface-dim z-10"></div>
+<div class="bg-paper-cream border border-ink-black p-6 shadow-sm max-w-2xl -rotate-1">
+<div class="flex justify-between mb-2 font-metadata text-[10px] opacity-50"><span>TELEGRAM #882-A</span><span>08 OCT 1924</span></div>
+<p class="font-mono text-xs uppercase bg-ink-black/5 p-4 border-l-2 border-ink-black">STOP. PACKAGE SECURED IN THE HOLLOW OAK. STOP. AWAIT FURTHER INSTRUCTIONS AT DAWN. STOP.</p>
+</div>
+</div>
+<div class="relative pl-20">
+<div class="absolute left-6 top-4 w-4 h-4 rounded-full bg-ink-black border-4 border-surface-dim z-10"></div>
+<div class="bg-white border border-ink-black p-4 shadow-sm max-w-2xl flex gap-4 rotate-1">
+<div class="w-24 h-32 bg-surface-dim border border-ink-black shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiBaFy1o0m0yQUx7WQ9hjpfGGGxh5j2bH0e5BK9vm21EFohldGCXM3mk4YF9po5Z6b63NTW8l0hblqu7PCReJhV0dvEroJnUVyE4UOuAiX6vI0PKZ_BhLI3jWDT4TThcs6fDOTScef0bhDH9OX6sh8volsX2L1uIRNMWuwCT-S3PUDo4x--MkCqCZVQ1ZyF-_RLrAxLWRbNzehE9HfHWHKi8CJx4JYeybTCOF7VpOuC6v7eRw7-H9fhWTOOxyHBZaTxz1PU2TQsC8w"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1 font-metadata text-[10px] opacity-50"><span>POSTCARD #112</span><span>01 OCT 1924</span></div>
+<h4 class="font-headline-md text-sm mb-1">THE CABIN AT MILE 40</h4>
+<p class="font-body-md text-xs italic">"Nobody lived there for decades, yet every Tuesday a light appeared..."</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-paper-cream border-t-2 border-ink-black">
+<a class="flex flex-col items-center justify-center text-ink-black p-2 mx-1 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-caps text-[10px]">MAP</span>
+</a>
+<a class="flex flex-col items-center justify-center text-ink-black p-2 mx-1 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-[10px]">FEED</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-airmail-blue text-on-primary rounded-none border-2 border-ink-black p-2 mx-1 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">import_contacts</span>
+<span class="font-label-caps text-[10px]">LEDGER</span>
+</a>
+</nav>
+<script>
+    // Micro-interactions: Stamp sound effect on click or hover
+    const cards = document.querySelectorAll('.group');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            // Potential sound trigger or hover effect logic
+        });
+    });
+</script>
+</body></html>

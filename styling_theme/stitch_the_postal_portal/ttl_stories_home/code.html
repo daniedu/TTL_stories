@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#474647",
+                    "secondary": "#ba002a",
+                    "on-tertiary-fixed": "#1b1b1c",
+                    "on-surface": "#1b1d0e",
+                    "inverse-surface": "#303221",
+                    "on-tertiary-container": "#aba9aa",
+                    "surface-dim": "#dbdcc3",
+                    "surface-tint": "#31628d",
+                    "surface-container-highest": "#e4e4cc",
+                    "tertiary-fixed": "#e5e2e3",
+                    "on-primary-fixed-variant": "#114a73",
+                    "primary-container": "#00416a",
+                    "inverse-primary": "#9ccbfb",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#c8c6c7",
+                    "on-secondary-fixed": "#410008",
+                    "inverse-on-surface": "#f2f2d9",
+                    "background": "#fbfbe2",
+                    "paper-cream": "#F5F5DC",
+                    "surface-container": "#efefd7",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#7faddc",
+                    "on-error-container": "#93000a",
+                    "surface": "#fbfbe2",
+                    "primary-fixed-dim": "#9ccbfb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#92001f",
+                    "ink-black": "#1A1A1B",
+                    "primary": "#002a48",
+                    "error-container": "#ffdad6",
+                    "stamp-red": "#C60C30",
+                    "on-surface-variant": "#42474e",
+                    "outline": "#72777f",
+                    "postmark-gray": "#A6A697",
+                    "airmail-blue": "#00416A",
+                    "on-secondary-container": "#fffbff",
+                    "outline-variant": "#c2c7cf",
+                    "primary-fixed": "#cfe5ff",
+                    "on-background": "#1b1d0e",
+                    "surface-variant": "#e4e4cc",
+                    "surface-container-high": "#eaead1",
+                    "surface-container-low": "#f5f5dc",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#fbfbe2",
+                    "secondary-fixed-dim": "#ffb3b2",
+                    "on-primary-fixed": "#001d33",
+                    "secondary-fixed": "#ffdad9",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "margin-desktop": "32px",
+                    "container-max": "640px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Courier Prime"],
+                    "label-caps": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Space Mono"],
+                    "headline-md": ["Space Mono"],
+                    "metadata": ["JetBrains Mono"],
+                    "body-md": ["Courier Prime"],
+                    "headline-lg": ["Space Mono"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "metadata": ["11px", {"lineHeight": "14px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fbfbe2;
+            background-image: radial-gradient(#dcdcc3 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            overflow: hidden;
+        }
+
+        .perforated-edge {
+            mask-image: radial-gradient(circle at 10px, transparent 6px, black 7px);
+            mask-size: 20px 100%;
+            mask-position: -10px center;
+        }
+
+        .paper-texture {
+            background-color: #F5F5DC;
+            position: relative;
+        }
+
+        .paper-texture::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .postmark {
+            border: 2px double #1A1A1B;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-5deg);
+        }
+
+        .wax-seal {
+            width: 56px;
+            height: 56px;
+            background: #ba002a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 0px 0px #410008;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        
+        .wax-seal:active {
+            transform: scale(0.95) translateY(2px);
+            box-shadow: 0px 0px 0px 0px #410008;
+        }
+
+        .tab-active {
+            background-color: #F5F5DC !important;
+            border-bottom: none !important;
+            z-index: 20;
+            margin-bottom: -2px;
+        }
+
+        .map-container {
+            background: #1A1A1B;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-marker {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #F5F5DC;
+            border-radius: 50%;
+            background: rgba(245, 245, 220, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            transition: all 0.2s;
+        }
+
+        .custom-marker:hover {
+            background: rgba(245, 245, 220, 0.3);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Hide scrollbar for clean ledger look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="h-dvh flex flex-col font-body-md text-ink-black selection:bg-airmail-blue selection:text-white">
+<!-- Top Navigation Bar (Shared Component Logic) -->
+<header class="bg-background w-full h-16 flex justify-between items-center px-margin-mobile border-b-2 border-ink-black z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-ink-black cursor-pointer hover:bg-surface-container-highest p-1 transition-colors">menu</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-ink-black uppercase tracking-tighter">TTL STORIES</h1>
+</div>
+<div class="flex items-center gap-4">
+<!-- Public Mode Toggle styled as Airmail Stamp -->
+<button class="hidden md:flex items-center gap-2 px-3 py-1 bg-airmail-blue text-white border-2 border-ink-black text-label-caps font-bold active:translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-sm">public</span>
+                PUBLIC MODE
+            </button>
+<button class="md:hidden flex items-center justify-center w-10 h-10 bg-airmail-blue text-white border-2 border-ink-black">
+<span class="material-symbols-outlined">public</span>
+</button>
+<span class="material-symbols-outlined text-ink-black text-3xl cursor-pointer">account_circle</span>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="flex-1 flex flex-col relative overflow-hidden">
+<!-- Tab Bar: Vintage File Tabs -->
+<div class="flex px-4 pt-4 border-b-2 border-ink-black bg-surface-container-low z-40">
+<button class="tab-active px-6 py-2 border-t-2 border-x-2 border-ink-black bg-postmark-gray/20 font-label-caps text-ink-black transition-all" id="tab-MAP" onclick="switchTab('MAP')">MAP</button>
+<button class="px-6 py-2 border-t-2 border-x-2 border-ink-black border-b-2 bg-surface-dim/40 font-label-caps text-ink-black transition-all -ml-[2px]" id="tab-FEED" onclick="switchTab('FEED')">FEED</button>
+<button class="px-6 py-2 border-t-2 border-x-2 border-ink-black border-b-2 bg-surface-dim/40 font-label-caps text-ink-black transition-all -ml-[2px]" id="tab-GLOBAL" onclick="switchTab('GLOBAL')">GLOBAL</button>
+</div>
+<!-- Viewport Container -->
+<div class="flex-1 relative overflow-hidden paper-texture">
+<!-- Map View -->
+<div class="absolute inset-0 z-10 transition-opacity duration-300" id="view-MAP">
+<div class="w-full h-full map-container">
+<!-- Map Placeholder -->
+<div class="absolute inset-0 opacity-40 mix-blend-screen" data-location="London" style="">
+<img class="w-full h-full object-cover" data-alt="A vintage-style dark monochromatic map of London with detailed street lines and grid marks. The style is technical and industrial, using only deep charcoal and faint off-white ink tones to mimic a 1920s cartographic print on heavy textured paper. No modern colors or glowing elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOOONKM8t3O_k3gW31pb3Imr9Jr-LcmgsnKbaT-hSgZWMi3uUYxyx_FZbne6tzjwJQZ2yUslVQo77BgK5k4enX1cndFQg4M99v3A-BdRzIVEbfYWXZNx9_J3nGvsTFYQdMnc4EGxS2epNZluSuCgLZLnHt2cC2I73U7HJmyYonV9ay5Jqzztv11KoaoxAhbFAVNtk_1nBXCT3S7JfZpVtMpO0A_J4h5-xEAmkRiEDQ7DJFxlVJcepPD_NqYZx2528AOvbuvDLBWbp5"/>
+</div>
+<!-- Custom Markers (Postage Marks) -->
+<div class="custom-marker" style="top: 25%; left: 40%;">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div class="custom-marker" style="top: 55%; left: 60%;">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<div class="custom-marker" style="top: 40%; left: 15%;">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">train</span>
+</div>
+</div>
+</div>
+<!-- Feed View -->
+<div class="absolute inset-0 z-0 opacity-0 pointer-events-none transition-opacity duration-300 overflow-y-auto no-scrollbar p-6 space-y-8 max-w-container-max mx-auto" id="view-FEED">
+<!-- Story Card 1 -->
+<div class="bg-white border-2 border-ink-black p-6 shadow-[4px_4px_0px_0px_#1A1A1B] relative">
+<div class="absolute top-0 right-0 p-4">
+<div class="w-12 h-12 border-2 border-stamp-red flex items-center justify-center rotate-6 text-stamp-red font-bold text-xs perforated-edge bg-red-50">
+                            URGENT
+                        </div>
+</div>
+<div class="mb-4">
+<span class="font-label-caps text-metadata opacity-60">TO: REGIONAL HQ</span>
+<h3 class="font-headline-md mt-1">THE GHOST IN THE ARCHIVE</h3>
+</div>
+<p class="font-body-md text-ink-black leading-relaxed mb-6">
+                        STOP. DISCOVERED UNLABELED LEDGERS IN BASEMENT B-4. STOP. ENTRIES DATE BACK TO 1894 BUT THE INK IS STILL WET. STOP. SEND CLASSIFIED INVESTIGATOR IMMEDIATELY. STOP.
+                    </p>
+<div class="flex justify-between items-center pt-4 border-t border-ink-black/20">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 bg-stamp-red rounded-full shadow-sm"></div>
+<span class="font-metadata text-xs">PRIVATE DISPATCH</span>
+</div>
+<span class="font-metadata text-xs">14 OCT 1924</span>
+</div>
+</div>
+<!-- Story Card 2 -->
+<div class="bg-white border-2 border-ink-black p-6 shadow-[4px_4px_0px_0px_#1A1A1B] relative">
+<div class="absolute top-0 right-0 p-4">
+<div class="w-12 h-12 border-2 border-airmail-blue flex items-center justify-center -rotate-3 text-airmail-blue font-bold text-[10px] perforated-edge bg-blue-50">
+                            PAR AVION
+                        </div>
+</div>
+<div class="mb-4">
+<span class="font-label-caps text-metadata opacity-60">FROM: STATION 402</span>
+<h3 class="font-headline-md mt-1">NIGHT SHIFT ECHOES</h3>
+</div>
+<p class="font-body-md text-ink-black leading-relaxed mb-6">
+                        The telegraph machine started typing on its own at 03:00. No wire connected. It just repeated the same coordinates over and over: 51.5074 N, 0.1278 W.
+                    </p>
+<div class="flex justify-between items-center pt-4 border-t border-ink-black/20">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 bg-airmail-blue rounded-full shadow-sm"></div>
+<span class="font-metadata text-xs">PUBLIC DISPATCH</span>
+</div>
+<span class="font-metadata text-xs">13 OCT 1924</span>
+</div>
+</div>
+<!-- Story Card 3 (Expired/Watermarked Style) -->
+<div class="bg-surface-container border-2 border-ink-black p-6 opacity-80 grayscale relative overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 rotate-[-25deg]">
+<span class="text-8xl font-bold border-8 border-ink-black px-10 py-4">POSTED</span>
+</div>
+<div class="mb-4">
+<span class="font-label-caps text-metadata opacity-60">TO: THE VOID</span>
+<h3 class="font-headline-md mt-1">MISSING CORRESPONDENCE</h3>
+</div>
+<p class="font-body-md text-ink-black leading-relaxed mb-6">
+                        He left the letter on the bench by the river. By the time I reached it, the rain had washed the ink into a blue puddle of secrets.
+                    </p>
+<div class="flex justify-between items-center pt-4 border-t border-ink-black/20">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 bg-yellow-500 rounded-full shadow-sm"></div>
+<span class="font-metadata text-xs">ARCHIVED DISPATCH</span>
+</div>
+<span class="font-metadata text-xs">01 OCT 1924</span>
+</div>
+</div>
+<!-- Padding for FAB -->
+<div class="h-24"></div>
+</div>
+<!-- Global View (Similar to feed but different context) -->
+<div class="absolute inset-0 z-0 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center" id="view-GLOBAL">
+<div class="text-center p-8 max-w-sm border-4 border-double border-ink-black">
+<span class="material-symbols-outlined text-6xl mb-4">public</span>
+<h2 class="font-headline-lg uppercase mb-2">Global Ledger</h2>
+<p class="font-body-md">Connecting all regional stations. Please wait for the operator to establish connection...</p>
+<div class="mt-6 flex justify-center space-x-1">
+<div class="w-2 h-2 bg-ink-black animate-bounce" style="animation-delay: 0.1s"></div>
+<div class="w-2 h-2 bg-ink-black animate-bounce" style="animation-delay: 0.2s"></div>
+<div class="w-2 h-2 bg-ink-black animate-bounce" style="animation-delay: 0.3s"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action: Red Wax Seal FAB -->
+<div class="fixed bottom-24 right-6 z-50">
+<button aria-label="Create Post" class="wax-seal group">
+<span class="material-symbols-outlined text-white text-3xl group-hover:scale-110 transition-transform">edit</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Style) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-paper-cream border-t-2 border-ink-black">
+<button class="nav-item-MAP flex flex-col items-center justify-center bg-airmail-blue text-on-primary rounded-none border-2 border-ink-black p-2 mx-1 transition-all active:scale-95" onclick="switchTab('MAP')">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-caps text-[10px] mt-1">MAP</span>
+</button>
+<button class="nav-item-FEED flex flex-col items-center justify-center text-ink-black p-2 mx-1 hover:bg-surface-dim transition-all active:scale-95" onclick="switchTab('FEED')">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-[10px] mt-1">FEED</span>
+</button>
+<button class="nav-item-GLOBAL flex flex-col items-center justify-center text-ink-black p-2 mx-1 hover:bg-surface-dim transition-all active:scale-95" onclick="switchTab('GLOBAL')">
+<span class="material-symbols-outlined">public</span>
+<span class="font-label-caps text-[10px] mt-1">GLOBAL</span>
+</button>
+</nav>
+<script>
+        function switchTab(tabId) {
+            // Hide all views
+            const views = ['MAP', 'FEED', 'GLOBAL'];
+            views.forEach(v => {
+                const viewEl = document.getElementById(`view-${v}`);
+                viewEl.classList.add('opacity-0', 'pointer-events-none');
+                viewEl.classList.remove('z-10');
+                
+                // Update tab buttons
+                const tabBtn = document.getElementById(`tab-${v}`);
+                tabBtn.classList.remove('tab-active');
+                tabBtn.classList.add('bg-surface-dim/40', 'border-b-2');
+
+                // Update bottom nav items
+                const navBtn = document.querySelector(`.nav-item-${v}`);
+                navBtn.classList.remove('bg-airmail-blue', 'text-on-primary', 'border-2', 'border-ink-black');
+                navBtn.classList.add('text-ink-black');
+            });
+
+            // Show selected view
+            const activeView = document.getElementById(`view-${tabId}`);
+            activeView.classList.remove('opacity-0', 'pointer-events-none');
+            activeView.classList.add('z-10');
+
+            // Set active tab button
+            const activeTab = document.getElementById(`tab-${tabId}`);
+            activeTab.classList.add('tab-active');
+            activeTab.classList.remove('bg-surface-dim/40', 'border-b-2');
+
+            // Set active bottom nav item
+            const activeNav = document.querySelector(`.nav-item-${tabId}`);
+            activeNav.classList.add('bg-airmail-blue', 'text-on-primary', 'border-2', 'border-ink-black');
+            activeNav.classList.remove('text-ink-black');
+        }
+
+        // Initialize state
+        window.onload = () => {
+            switchTab('MAP');
+        };
+    </script>
+</body></html>

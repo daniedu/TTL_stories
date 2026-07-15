@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Space+Mono:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .paper-texture {
+            background-color: #F5F5DC;
+            background-image: 
+                radial-gradient(#1a1a1b11 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        .lined-input {
+            background-image: linear-gradient(transparent, transparent 31px, #1A1A1B 31px);
+            background-size: 100% 32px;
+            line-height: 32px;
+        }
+
+        .postage-border {
+            mask-image: radial-gradient(circle 8px at 8px 8px, transparent 8px, black 8px);
+            mask-size: 24px 24px;
+            mask-position: -8px -8px;
+        }
+
+        .rubber-stamp {
+            position: relative;
+            transform: rotate(-2deg);
+            transition: all 0.2s ease;
+        }
+
+        .rubber-stamp:active {
+            transform: scale(0.95) rotate(0deg);
+        }
+
+        .stamp-active::after {
+            content: 'SELECTED';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #C60C30;
+            color: white;
+            font-family: 'JetBrains Mono';
+            font-size: 8px;
+            padding: 2px 4px;
+            transform: rotate(15deg);
+            border: 1px solid #1A1A1B;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#474647",
+                        "secondary": "#ba002a",
+                        "on-tertiary-fixed": "#1b1b1c",
+                        "on-surface": "#1b1d0e",
+                        "inverse-surface": "#303221",
+                        "on-tertiary-container": "#aba9aa",
+                        "surface-dim": "#dbdcc3",
+                        "surface-tint": "#31628d",
+                        "surface-container-highest": "#e4e4cc",
+                        "tertiary-fixed": "#e5e2e3",
+                        "on-primary-fixed-variant": "#114a73",
+                        "primary-container": "#00416a",
+                        "inverse-primary": "#9ccbfb",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#c8c6c7",
+                        "secondary-container": "#e0273f",
+                        "tertiary-container": "#3e3e3f",
+                        "tertiary": "#282829",
+                        "on-secondary-fixed": "#410008",
+                        "inverse-on-surface": "#f2f2d9",
+                        "background": "#fbfbe2",
+                        "paper-cream": "#F5F5DC",
+                        "surface-container": "#efefd7",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#7faddc",
+                        "on-error-container": "#93000a",
+                        "surface": "#fbfbe2",
+                        "primary-fixed-dim": "#9ccbfb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#92001f",
+                        "ink-black": "#1A1A1B",
+                        "primary": "#002a48",
+                        "error-container": "#ffdad6",
+                        "stamp-red": "#C60C30",
+                        "on-surface-variant": "#42474e",
+                        "outline": "#72777f",
+                        "postmark-gray": "#A6A697",
+                        "airmail-blue": "#00416A",
+                        "on-secondary-container": "#fffbff",
+                        "outline-variant": "#c2c7cf",
+                        "primary-fixed": "#cfe5ff",
+                        "on-background": "#1b1d0e",
+                        "surface-variant": "#e4e4cc",
+                        "surface-container-high": "#eaead1",
+                        "surface-container-low": "#f5f5dc",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fbfbe2",
+                        "secondary-fixed-dim": "#ffb3b2",
+                        "on-primary-fixed": "#001d33",
+                        "secondary-fixed": "#ffdad9",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "container-max": "640px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Courier Prime"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Space Mono"],
+                        "headline-md": ["Space Mono"],
+                        "metadata": ["JetBrains Mono"],
+                        "body-md": ["Courier Prime"],
+                        "headline-lg": ["Space Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "metadata": ["11px", {"lineHeight": "14px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim font-body-md text-ink-black min-h-screen flex items-center justify-center p-4">
+<!-- Post Form Overlay Container -->
+<div class="relative w-full max-w-[600px] bg-paper-cream border-4 border-ink-black shadow-[8px_8px_0px_0px_rgba(26,26,27,1)] overflow-hidden">
+<!-- Telegram Header Section -->
+<header class="bg-ink-black text-paper-cream px-6 py-4 flex justify-between items-center border-b-4 border-ink-black">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-paper-cream" style="font-variation-settings: 'FILL' 1;">send</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile tracking-tighter uppercase">TELEGRAM</h1>
+</div>
+<button class="text-paper-cream hover:bg-tertiary p-1 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<!-- Form Content -->
+<div class="p-6 md:p-10 space-y-8 relative">
+<!-- Watermark Postmark -->
+<div class="absolute top-20 right-10 opacity-10 pointer-events-none rotate-12">
+<span class="material-symbols-outlined text-[120px]">potted_plant</span>
+</div>
+<!-- Meta Information Fields -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-label-caps uppercase text-metadata">
+<div class="space-y-1">
+<label class="block text-ink-black opacity-60">To: [Location]</label>
+<input class="w-full bg-transparent border-b-2 border-ink-black border-t-0 border-x-0 focus:ring-0 focus:border-airmail-blue font-body-md py-1" placeholder="CENTRAL STATION" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="block text-ink-black opacity-60">From: [Station Master]</label>
+<input class="w-full bg-transparent border-b-2 border-ink-black border-t-0 border-x-0 focus:ring-0 font-body-md py-1 opacity-70" readonly="" type="text" value="USER_402"/>
+</div>
+</div>
+<!-- Letter Body -->
+<div class="relative group">
+<textarea class="w-full h-64 bg-transparent border-none focus:ring-0 lined-input font-body-lg text-body-lg resize-none placeholder:opacity-30 uppercase" id="telegram-body" maxlength="280" placeholder="STOP START WRITING YOUR MESSAGE HERE STOP..."></textarea>
+<!-- Character Counter -->
+<div class="absolute bottom-2 right-2 font-label-caps text-metadata bg-paper-cream px-2 py-1 border border-ink-black">
+                    WORDS: <span id="char-count">0</span>/280
+                </div>
+</div>
+<!-- Visibility Selection (Rubber Stamps) -->
+<div class="space-y-4">
+<label class="font-label-caps text-metadata uppercase opacity-60">Select Dispatch Priority:</label>
+<div class="flex flex-wrap gap-4">
+<!-- Public Stamp -->
+<button class="rubber-stamp group flex items-center gap-2 border-2 border-airmail-blue text-airmail-blue px-4 py-2 font-headline-md hover:bg-airmail-blue hover:text-white transition-all stamp-active" onclick="selectStamp(this)" type="button">
+<span class="material-symbols-outlined">public</span>
+<span class="text-label-caps">PUBLIC</span>
+</button>
+<!-- Unlisted Stamp -->
+<button class="rubber-stamp group flex items-center gap-2 border-2 border-postmark-gray text-postmark-gray px-4 py-2 font-headline-md hover:bg-postmark-gray hover:text-white transition-all" onclick="selectStamp(this)" type="button">
+<span class="material-symbols-outlined">visibility_off</span>
+<span class="text-label-caps">UNLISTED</span>
+</button>
+<!-- Private Stamp -->
+<button class="rubber-stamp group flex items-center gap-2 border-2 border-stamp-red text-stamp-red px-4 py-2 font-headline-md hover:bg-stamp-red hover:text-white transition-all" onclick="selectStamp(this)" type="button">
+<span class="material-symbols-outlined">lock</span>
+<span class="text-label-caps">PRIVATE</span>
+</button>
+</div>
+</div>
+<!-- Footer Action Section -->
+<div class="pt-8 border-t-2 border-ink-black flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full border-4 border-ink-black flex items-center justify-center p-1 bg-white">
+<div class="w-full h-full border-2 border-dashed border-ink-black rounded-full flex items-center justify-center text-[10px] font-label-caps text-center leading-none">
+                            POSTED<br/>1924
+                        </div>
+</div>
+<div class="font-metadata leading-tight uppercase">
+                       Official Archive<br/>No. 8821-B
+                   </div>
+</div>
+<!-- Main Post Button (Post Office Seal) -->
+<button class="relative group active:translate-y-1 transition-transform">
+<div class="bg-secondary text-on-secondary px-10 py-6 font-headline-lg-mobile uppercase tracking-widest border-2 border-ink-black shadow-[4px_4px_0px_0px_rgba(26,26,27,1)] group-hover:shadow-none group-hover:translate-x-1 group-hover:translate-y-1 transition-all">
+                        SEND
+                    </div>
+<!-- Decorative serrated edge simulation -->
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-ink-black rotate-45 -z-10"></div>
+</button>
+</div>
+</div>
+<!-- Perforated Bottom Edge -->
+<div class="h-4 w-full bg-ink-black" style="mask-image: radial-gradient(circle 8px at 12px 100%, transparent 8px, black 8px); mask-size: 24px 24px;"></div>
+</div>
+<!-- Scripts for Interaction -->
+<script>
+        const textarea = document.getElementById('telegram-body');
+        const charCount = document.getElementById('char-count');
+
+        textarea.addEventListener('input', () => {
+            const length = textarea.value.length;
+            charCount.textContent = length;
+            
+            // Limit logic color indicator
+            if (length >= 250) {
+                charCount.parentElement.classList.add('text-stamp-red');
+            } else {
+                charCount.parentElement.classList.remove('text-stamp-red');
+            }
+        });
+
+        function selectStamp(element) {
+            // Remove active state from all
+            document.querySelectorAll('.rubber-stamp').forEach(btn => {
+                btn.classList.remove('stamp-active');
+            });
+            // Add to current
+            element.classList.add('stamp-active');
+        }
+
+        // Form Submission micro-interaction
+        document.querySelector('button.group').addEventListener('click', function() {
+            const btn = this.querySelector('div');
+            btn.innerHTML = "DISPATCHING...";
+            btn.classList.replace('bg-secondary', 'bg-airmail-blue');
+            
+            setTimeout(() => {
+                btn.innerHTML = "DELIVERED";
+                btn.classList.replace('bg-airmail-blue', 'bg-postmark-gray');
+            }, 1500);
+        });
+    </script>
+</body></html>

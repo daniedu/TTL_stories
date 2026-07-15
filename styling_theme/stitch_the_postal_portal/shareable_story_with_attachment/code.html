@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TTL STORIES | Dispatch</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#474647",
+                        "secondary": "#ba002a",
+                        "on-tertiary-fixed": "#1b1b1c",
+                        "on-surface": "#1b1d0e",
+                        "inverse-surface": "#303221",
+                        "on-tertiary-container": "#aba9aa",
+                        "surface-dim": "#dbdcc3",
+                        "surface-tint": "#31628d",
+                        "surface-container-highest": "#e4e4cc",
+                        "tertiary-fixed": "#e5e2e3",
+                        "on-primary-fixed-variant": "#114a73",
+                        "primary-container": "#00416a",
+                        "inverse-primary": "#9ccbfb",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#c8c6c7",
+                        "secondary-container": "#e0273f",
+                        "tertiary-container": "#3e3e3f",
+                        "tertiary": "#282829",
+                        "on-secondary-fixed": "#410008",
+                        "inverse-on-surface": "#f2f2d9",
+                        "background": "#fbfbe2",
+                        "paper-cream": "#F5F5DC",
+                        "surface-container": "#efefd7",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#7faddc",
+                        "on-error-container": "#93000a",
+                        "surface": "#fbfbe2",
+                        "primary-fixed-dim": "#9ccbfb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#92001f",
+                        "ink-black": "#1A1A1B",
+                        "primary": "#002a48",
+                        "error-container": "#ffdad6",
+                        "stamp-red": "#C60C30",
+                        "on-surface-variant": "#42474e",
+                        "outline": "#72777f",
+                        "postmark-gray": "#A6A697",
+                        "airmail-blue": "#00416A",
+                        "on-secondary-container": "#fffbff",
+                        "outline-variant": "#c2c7cf",
+                        "primary-fixed": "#cfe5ff",
+                        "on-background": "#1b1d0e",
+                        "surface-variant": "#e4e4cc",
+                        "surface-container-high": "#eaead1",
+                        "surface-container-low": "#f5f5dc",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fbfbe2",
+                        "secondary-fixed-dim": "#ffb3b2",
+                        "on-primary-fixed": "#001d33",
+                        "secondary-fixed": "#ffdad9",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "container-max": "640px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Courier Prime"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Space Mono"],
+                        "headline-md": ["Space Mono"],
+                        "metadata": ["JetBrains Mono"],
+                        "body-md": ["Courier Prime"],
+                        "headline-lg": ["Space Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "metadata": ["11px", {"lineHeight": "14px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .perforated-edge {
+            mask-image: radial-gradient(circle, transparent 6px, black 7px);
+            mask-size: 24px 24px;
+            mask-repeat: repeat;
+            mask-position: -12px -12px;
+        }
+        
+        .stamp-texture {
+            opacity: 0.85;
+            mix-blend-mode: multiply;
+        }
+
+        .paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+
+        .rubber-stamp {
+            border: 3px solid;
+            padding: 4px 12px;
+            transform: rotate(-3deg);
+            display: inline-block;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .postmark-circle {
+            border: 2px solid;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(15deg);
+        }
+
+        .polaroid-frame {
+            background: #fff;
+            padding: 8px 8px 24px 8px;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.1);
+            border: 1px solid #d1d5db;
+        }
+
+        .paper-clip {
+            width: 15px;
+            height: 40px;
+            border: 2px solid #72777f;
+            border-radius: 20px;
+            background: transparent;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            z-index: 10;
+        }
+        .paper-clip::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 2px;
+            width: 7px;
+            height: 25px;
+            border: 2px solid #72777f;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface-dim paper-texture min-h-screen flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-on-tertiary border-b-2 border-ink-black flex justify-between items-center px-margin-mobile w-full h-16 fixed top-0 z-50">
+<button class="active:translate-y-0.5 transition-transform hover:bg-surface-container-highest flex items-center justify-center h-10 w-10">
+<span class="material-symbols-outlined text-ink-black" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-ink-black uppercase tracking-tighter">TTL STORIES</h1>
+<button class="active:translate-y-0.5 transition-transform hover:bg-surface-container-highest flex items-center justify-center h-10 w-10">
+<span class="material-symbols-outlined text-ink-black" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center w-full px-4 pt-24 pb-32">
+<!-- Postcard Container -->
+<article class="relative max-w-container-max w-full bg-paper-cream border-2 border-ink-black p-8 md:p-12 shadow-[8px_8px_0px_0px_#1A1A1B] flex flex-col gap-8">
+<!-- Perforated Stamp (Top Right) -->
+<div class="absolute -top-4 -right-4 w-28 h-32 bg-on-tertiary border-2 border-ink-black p-1 flex flex-col items-center justify-center shadow-[4px_4px_0px_0px_#1A1A1B] rotate-3 z-20">
+<div class="w-full h-full border border-postmark-gray flex flex-col items-center justify-center relative overflow-hidden">
+<div class="bg-airmail-blue text-on-primary w-full text-center font-label-caps text-[10px] py-1">AIR MAIL</div>
+<div class="flex-grow flex flex-col items-center justify-center py-2">
+<span class="font-headline-md text-ink-black">12h</span>
+<span class="font-metadata text-postmark-gray uppercase">remaining</span>
+</div>
+<div class="w-full h-1 bg-ink-black opacity-20"></div>
+</div>
+<!-- Perforation mimic via CSS dots -->
+<div class="absolute top-0 left-0 w-full flex justify-around -mt-1">
+<div class="w-2 h-2 bg-surface-dim rounded-full"></div>
+<div class="w-2 h-2 bg-surface-dim rounded-full"></div>
+<div class="w-2 h-2 bg-surface-dim rounded-full"></div>
+</div>
+</div>
+<!-- Content Area -->
+<div class="flex flex-col gap-6">
+<!-- Telegram-style Headers -->
+<div class="border-b-2 border-ink-black pb-4 flex flex-col gap-2">
+<div class="flex items-baseline gap-4">
+<span class="font-label-caps text-ink-black opacity-60">TO:</span>
+<span class="font-headline-md text-ink-black uppercase">THE VOID</span>
+</div>
+<div class="flex items-baseline gap-4">
+<span class="font-label-caps text-ink-black opacity-60">FROM:</span>
+<span class="font-headline-md text-ink-black uppercase">STATION MASTER</span>
+</div>
+<div class="flex items-baseline gap-4">
+<span class="font-label-caps text-ink-black opacity-60">LOC:</span>
+<span class="font-metadata text-ink-black">GRID SECTOR 402, LONDON DIST.</span>
+</div>
+</div>
+<!-- Attachment: Photo (Polaroid style) -->
+<div class="relative self-center md:self-end mt-4 mb-4 -rotate-2 group">
+<div class="paper-clip"></div>
+<div class="polaroid-frame w-48 h-56 md:w-56 md:h-64 flex flex-col items-center">
+<div class="w-full h-4/5 bg-surface-container overflow-hidden border border-outline-variant">
+<img alt="Attached evidence" class="w-full h-full object-cover grayscale contrast-125 brightness-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb9rTCGOjKun45NSnAFkFU6x80tFL5BP2JuR0FR4lFhofoEpTWVy4FVijxheO_A1zSwebyFKx59Utq6e9sPBLTvxVXwrr26aOtHTnUcSdc635V9-XYpsnPfW_MeK9oN0Hv8ajomqi1tMVJzrAfT31kQaxCdkQ2X_0yhOBrzn8EnxHyZQ6njwOE_w6jhj6A5s9GrWsJFQGW1QxRglxONhusxHojlGM2ezGvcqtcyEcZW-3IASuMJL42EhSWFXfwPRW_MNfFMjyGeuy6"/>
+</div>
+<div class="w-full flex-grow flex items-center justify-center p-2">
+<span class="font-metadata text-[10px] text-ink-black opacity-60">ATTACHMENT_01.JPG</span>
+</div>
+</div>
+</div>
+<!-- Story Text -->
+<div class="py-4">
+<p class="font-headline-lg text-headline-lg text-ink-black leading-relaxed whitespace-pre-wrap">
+THE RAIN IN THIS SECTOR SMELLS LIKE OXIDIZED COPPER AND OLD COINS. 
+
+I FOUND A DISCARDED TELEGRAM FORM BENEATH THE EMBANKMENT. IT SIMPLY READ: "WE ARRIVE AT DAWN, BRING NO LIGHTS." 
+
+WHO WERE THEY? WHO WAS WAITING? THE INK HAD BLED INTO THE FIBERS OF THE PAPER, BECOMING ONE WITH THE PULP. 
+
+SOME STORIES AREN'T MEANT TO BE READ, ONLY FELT IN THE WEIGHT OF THE PAPER.
+                    </p>
+</div>
+</div>
+<!-- Card Footer / Stamps -->
+<div class="mt-auto pt-8 flex flex-wrap items-end justify-between gap-4">
+<!-- Signature/Author -->
+<div class="flex flex-col">
+<span class="font-label-caps text-ink-black opacity-40 mb-1">AUTHENTICATED BY</span>
+<div class="rubber-stamp text-stamp-red border-stamp-red font-headline-md">
+                        STATION MASTER
+                    </div>
+</div>
+<!-- Status Postmark -->
+<div class="relative">
+<div class="postmark-circle border-airmail-blue text-airmail-blue flex-col">
+<span class="font-metadata text-[10px]">VERIFIED</span>
+<span class="font-label-caps text-sm">PUBLIC</span>
+<span class="font-metadata text-[8px]">EST. 1924</span>
+</div>
+</div>
+</div>
+<!-- Decorative Tape/Artifact -->
+<div class="absolute -bottom-2 left-1/4 w-32 h-8 bg-on-tertiary-container opacity-20 rotate-1 mix-blend-multiply"></div>
+</article>
+<!-- Sidebar / Contextual Controls (Desktop Only) -->
+<aside class="hidden lg:flex flex-col gap-4 ml-12 w-48">
+<button class="bg-airmail-blue text-on-primary border-2 border-ink-black p-4 font-label-caps active:scale-95 transition-all text-center">
+                FORWARD STORY
+            </button>
+<button class="bg-background text-ink-black border-2 border-ink-black p-4 font-label-caps active:scale-95 transition-all text-center">
+                SAVE TO LEDGER
+            </button>
+<div class="border-2 border-ink-black p-4 bg-paper-cream mt-8">
+<span class="font-metadata text-ink-black opacity-60 block mb-2">MANIFEST:</span>
+<p class="font-metadata text-ink-black text-[10px] leading-tight">
+                    ITEM NO: 772-A<br/>
+                    WEIGHT: 12g<br/>
+                    CLASS: EPHEMERAL<br/>
+                    STATUS: ACTIVE
+                </p>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-paper-cream border-t-2 border-ink-black">
+<a class="flex flex-col items-center justify-center text-ink-black p-2 mx-1 hover:bg-surface-dim active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-caps text-label-caps">MAP</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-airmail-blue text-on-primary rounded-none border-2 border-ink-black p-2 mx-1 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-caps text-label-caps">FEED</span>
+</a>
+<a class="flex flex-col items-center justify-center text-ink-black p-2 mx-1 hover:bg-surface-dim active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+<span class="font-label-caps text-label-caps">GLOBAL</span>
+</a>
+</nav>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Subtle tilt effect on the postcard for tactile feel
+        const card = document.querySelector('article');
+        document.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 100;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 100;
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        // Add rubber stamp click sounds or vibrations
+        const buttons = document.querySelectorAll('button, a');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (window.navigator.vibrate) {
+                    window.navigator.vibrate(10);
+                }
+            });
+        });
+    </script>
+</body></html>

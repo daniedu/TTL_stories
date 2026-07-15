@@ -1,11 +1,35 @@
 import type { Metadata, Viewport } from "next";
+import { Courier_Prime, JetBrains_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
 import RegisterSW from "@/components/RegisterSW";
+
+const courierPrime = Courier_Prime({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-courier-prime",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+});
+
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-space-mono",
+});
 
 export const metadata: Metadata = {
   title: "TTL Stories",
   description: "Ephemeral location-based stories",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ttl-stories.vercel.app"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://ttl-stories.vercel.app",
+  ),
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
@@ -33,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1e3a5f",
+  themeColor: "#00416A",
 };
 
 export default function RootLayout({
@@ -42,16 +66,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${courierPrime.variable} ${jetbrainsMono.variable} ${spaceMono.variable}`}
+    >
       <head>
         <link rel="icon" href="/icons/icon.svg" />
         <link rel="apple-touch-icon" href="/icons/icon.svg" />
-        <link rel="apple-touch-startup-image" href="/icons/icon.svg" />
       </head>
-      <body className="overscroll-none">
-        {children}
-        <RegisterSW />
-      </body>
+      <body className="overscroll-none">{children}</body>
     </html>
   );
 }

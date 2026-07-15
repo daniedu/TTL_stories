@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TTL Stories - Telegram Viewer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#474647",
+                        "surface-variant": "#e4e4cc",
+                        "airmail-blue": "#00416A",
+                        "surface-bright": "#fbfbe2",
+                        "secondary-fixed": "#ffdad9",
+                        "on-surface-variant": "#42474e",
+                        "outline": "#72777f",
+                        "surface-container-low": "#f5f5dc",
+                        "paper-cream": "#F5F5DC",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#303221",
+                        "on-error": "#ffffff",
+                        "tertiary": "#282829",
+                        "surface-dim": "#dbdcc3",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#cfe5ff",
+                        "tertiary-container": "#3e3e3f",
+                        "primary-container": "#00416a",
+                        "on-secondary-fixed-variant": "#92001f",
+                        "background": "#fbfbe2",
+                        "surface-container-highest": "#e4e4cc",
+                        "on-surface": "#1b1d0e",
+                        "surface-container": "#efefd7",
+                        "stamp-red": "#C60C30",
+                        "outline-variant": "#c2c7cf",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#e0273f",
+                        "secondary": "#ba002a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#31628d",
+                        "on-tertiary-container": "#aba9aa",
+                        "secondary-fixed-dim": "#ffb3b2",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c8c6c7",
+                        "on-primary-container": "#7faddc",
+                        "tertiary-fixed": "#e5e2e3",
+                        "on-secondary-fixed": "#410008",
+                        "inverse-on-surface": "#f2f2d9",
+                        "on-tertiary": "#ffffff",
+                        "ink-black": "#1A1A1B",
+                        "on-primary-fixed-variant": "#114a73",
+                        "surface": "#fbfbe2",
+                        "on-primary-fixed": "#001d33",
+                        "primary": "#002a48",
+                        "on-background": "#1b1d0e",
+                        "primary-fixed-dim": "#9ccbfb",
+                        "inverse-primary": "#9ccbfb",
+                        "on-tertiary-fixed": "#1b1b1c",
+                        "on-secondary-container": "#fffbff",
+                        "surface-container-high": "#eaead1",
+                        "postmark-gray": "#A6A697"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "container-max": "640px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Space Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-md": ["Space Mono"],
+                        "headline-lg-mobile": ["Space Mono"],
+                        "body-lg": ["Courier Prime"],
+                        "body-md": ["Courier Prime"],
+                        "metadata": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "metadata": ["11px", {"lineHeight": "14px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #1A1A1B; /* The Desk Background */
+            background-image: 
+                radial-gradient(circle at 2px 2px, #282829 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        
+        .postcard-shadow {
+            box-shadow: 12px 12px 0px 0px rgba(0,0,0,0.5);
+        }
+
+        .perforated-edge {
+            mask-image: radial-gradient(circle at 100% 50%, transparent 8px, black 8px);
+            mask-size: 100% 32px;
+            mask-repeat: repeat-y;
+        }
+
+        .stamped-rotation {
+            transform: rotate(-12deg);
+        }
+
+        .paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .timer-pulse {
+            animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .typewriter-cursor::after {
+            content: "|";
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-ink-black overflow-x-hidden">
+<!-- Top AppBar (from JSON guidance) -->
+<header class="bg-background dark:bg-on-tertiary border-b-2 border-ink-black flex justify-between items-center px-8 w-full h-16 fixed top-0 z-50">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-highest transition-transform active:translate-y-0.5 p-2 rounded">menu</button>
+<h1 class="font-headline-lg text-headline-lg font-bold text-ink-black uppercase tracking-tighter">TTL STORIES</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-8 font-label-caps text-label-caps">
+<a class="text-secondary" href="#">MAP</a>
+<a class="text-ink-black hover:text-secondary" href="#">FEED</a>
+<a class="text-ink-black hover:text-secondary" href="#">GLOBAL</a>
+</nav>
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-highest transition-transform active:translate-y-0.5 p-2 rounded">account_circle</button>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center pt-24 pb-12 px-4">
+<!-- The Ledger / Desk Space Container -->
+<div class="relative w-full max-w-4xl mx-auto">
+<!-- Postcard Story View -->
+<article class="bg-paper-cream paper-texture p-8 md:p-12 border-2 border-ink-black postcard-shadow relative overflow-hidden flex flex-col md:flex-row gap-12">
+<!-- Left Column: Metadata and Text Content -->
+<div class="flex-grow flex flex-col">
+<!-- Telegram Header Metadata -->
+<div class="border-b-2 border-ink-black pb-4 mb-8 grid grid-cols-2 gap-4 font-metadata text-metadata uppercase tracking-widest text-on-tertiary-fixed-variant">
+<div>
+<p class="font-bold text-ink-black">SENDER_ID:</p>
+<p>STATION_MASTER_402</p>
+</div>
+<div>
+<p class="font-bold text-ink-black">ORIGIN_PT:</p>
+<p>BERLIN_TEMP_DIST</p>
+</div>
+<div class="mt-2">
+<p class="font-bold text-ink-black">STAMPED_AT:</p>
+<p>14:32:04 // 22-OCT-24</p>
+</div>
+<div class="mt-2">
+<p class="font-bold text-ink-black">TRANS_ID:</p>
+<p>#4429-00-B</p>
+</div>
+</div>
+<!-- Main Story Content -->
+<div class="font-body-lg text-body-lg leading-relaxed text-ink-black space-y-6 max-w-prose">
+<p class="first-letter:text-4xl first-letter:font-bold first-letter:float-left first-letter:mr-2">
+                            The fog rolled in over the Spree faster than I could roll up my sleeves. I found this old lens cap near the bridge, rusted but holding a reflection of the tower that felt more real than the tower itself. 
+                        </p>
+<p>
+                            STOP. Messages left in the static usually fade by dawn. STOP. This one feels like it might stick around if the ink doesn't bleed. Tell the others at the junction to wait for the third signal. STOP.
+                        </p>
+</div>
+<!-- Footer Perforation Detail -->
+<div class="mt-auto pt-12 flex items-center gap-4">
+<div class="h-[2px] flex-grow bg-ink-black"></div>
+<span class="font-label-caps text-label-caps text-postmark-gray">END OF MESSAGE</span>
+<div class="h-[2px] flex-grow bg-ink-black"></div>
+</div>
+</div>
+<!-- Right Column: Visuals and Interactions -->
+<div class="w-full md:w-80 flex-shrink-0 flex flex-col items-center">
+<!-- Polaroid Style Photo -->
+<div class="relative bg-white p-4 pb-12 border border-ink-black shadow-md transform rotate-2 hover:rotate-0 transition-transform duration-300">
+<div class="absolute -top-4 -left-2 z-10 w-12 h-6 bg-airmail-blue/40 border border-ink-black/20 mix-blend-multiply -rotate-12"></div> <!-- Washi Tape effect -->
+<div class="w-full aspect-square bg-surface-dim overflow-hidden border border-ink-black/10">
+<img class="w-full h-full object-cover grayscale-[0.3]" data-alt="A moody, grainy film photograph of a misty riverside in Berlin during twilight. The water is dark and reflective, and the silhouette of a distant industrial bridge and TV tower are barely visible through a thick, blue-toned fog. The aesthetic is tactile and cinematic, resembling an old 35mm print with slight light leaks and rich shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgogMvoAdSKTPsqxw7vxQfySU6WPmszMA_DJMeLeLtH5lSuDTOjnadm7eVBrXzrLafweAQYqeid46yYjj8LNs_dd4AU_ncvGAxUypLJQuZo75IWrGD0VNyVAwLF8rEiTWGtVeyzb9R42Ew1sQ1JWOym10GE3QhkcCkY-YvtHpNxxwqmZGHse1THXK4vdXSwNEPlvzFCaMp4oOSpjCJhlEOglJ9NrtUrZIjgThDARLqBNzIXkt_DPbTExOW2lvS6ctTgBNmqD-1yqqQ"/>
+</div>
+<p class="mt-4 font-metadata text-center text-on-tertiary-fixed-variant italic">"TEMP_DIST_MIST_OCT24"</p>
+<!-- Mini Postmark Overlay on Photo -->
+<div class="absolute bottom-2 right-2 opacity-40">
+<span class="material-symbols-outlined text-4xl text-ink-black">brightness_low</span>
+</div>
+</div>
+<!-- Expiration Stamp Widget -->
+<div class="mt-16 relative">
+<div class="w-32 h-32 rounded-full border-4 border-stamp-red/80 flex flex-col items-center justify-center p-2 text-stamp-red stamped-rotation relative">
+<!-- SVG Border Text for "EXPIRATION" -->
+<svg class="absolute inset-0 w-full h-full -rotate-90" viewbox="0 0 100 100">
+<path d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" id="curve"></path>
+<text class="font-label-caps text-[8px] fill-stamp-red font-bold tracking-widest">
+<textpath href="#curve">TIME REMAINING • EPHEMERAL STORY • </textpath>
+</text>
+</svg>
+<div class="text-center timer-pulse">
+<span class="font-headline-md text-headline-md block leading-none">14:22</span>
+<span class="font-label-caps text-[10px] tracking-tighter">HRS LEFT</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-12 w-full space-y-4">
+<button class="w-full py-4 border-2 border-ink-black bg-airmail-blue text-on-primary font-label-caps hover:bg-primary transition-all active:scale-95 shadow-[4px_4px_0px_0px_rgba(26,26,27,1)] active:shadow-none active:translate-x-1 active:translate-y-1">
+                            REPLY VIA TELEGRAM
+                        </button>
+<button class="w-full py-4 border-2 border-ink-black bg-white text-ink-black font-label-caps hover:bg-surface-container-highest transition-all active:scale-95 shadow-[4px_4px_0px_0px_rgba(26,26,27,1)] active:shadow-none active:translate-x-1 active:translate-y-1 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">share</span>
+                            FORWARD MESSAGE
+                        </button>
+</div>
+</div>
+<!-- Decorative Stamp Perforation Edge (Bottom) -->
+<div class="absolute bottom-0 left-0 w-full h-4 flex overflow-hidden">
+<div class="flex-grow bg-transparent border-t-2 border-dashed border-ink-black/20"></div>
+</div>
+</article>
+<!-- Navigation Drawer (Contextual/Hidden on focus but hinted at side) -->
+<aside class="fixed left-0 top-0 h-full w-20 hover:w-64 bg-paper-cream border-r-2 border-ink-black group transition-all duration-300 z-40 flex flex-col items-center py-20 gap-8 overflow-hidden">
+<div class="flex flex-col items-center gap-10">
+<div class="flex flex-col items-center gap-2 group-hover:flex-row group-hover:w-full group-hover:px-6">
+<span class="material-symbols-outlined text-ink-black">mail</span>
+<span class="hidden group-hover:inline font-label-caps text-ink-black">POSTBOX</span>
+</div>
+<div class="flex flex-col items-center gap-2 group-hover:flex-row group-hover:w-full group-hover:px-6">
+<span class="material-symbols-outlined text-ink-black">send</span>
+<span class="hidden group-hover:inline font-label-caps text-ink-black">TELEGRAMS</span>
+</div>
+<div class="flex flex-col items-center gap-2 group-hover:flex-row group-hover:w-full group-hover:px-6 bg-secondary p-2 rounded-none -mx-2 border-2 border-ink-black">
+<span class="material-symbols-outlined text-on-secondary">import_contacts</span>
+<span class="hidden group-hover:inline font-label-caps text-on-secondary">LEDGER</span>
+</div>
+<div class="flex flex-col items-center gap-2 group-hover:flex-row group-hover:w-full group-hover:px-6">
+<span class="material-symbols-outlined text-ink-black">inventory_2</span>
+<span class="hidden group-hover:inline font-label-caps text-ink-black">ARCHIVE</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-paper-cream border-t-2 border-ink-black">
+<div class="flex flex-col items-center justify-center text-ink-black p-2 mx-1 hover:bg-surface-dim">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-caps text-[10px]">MAP</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-airmail-blue text-on-primary rounded-none border-2 border-ink-black p-2 mx-1 scale-110">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-[10px]">FEED</span>
+</div>
+<div class="flex flex-col items-center justify-center text-ink-black p-2 mx-1 hover:bg-surface-dim">
+<span class="material-symbols-outlined">public</span>
+<span class="font-label-caps text-[10px]">GLOBAL</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for the countdown timer
+        function updateTimer() {
+            const now = new Date();
+            // Just simulated countdown for visual effect
+            const hours = 14;
+            const minutes = 22;
+            const seconds = 60 - now.getSeconds();
+            
+            const timerDisplay = document.querySelector('.timer-pulse .text-headline-md');
+            if (timerDisplay) {
+                const s = seconds < 10 ? '0' + seconds : seconds;
+                timerDisplay.innerText = `${hours}:${minutes}:${s}`;
+            }
+        }
+        setInterval(updateTimer, 1000);
+
+        // Simple parallax or hover tilt effect for the postcard
+        document.addEventListener('mousemove', (e) => {
+            const postcard = document.querySelector('article');
+            const rect = postcard.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            const factor = 0.005;
+            postcard.style.transform = `perspective(1000px) rotateY(${x * factor}deg) rotateX(${-y * factor}deg)`;
+        });
+    </script>
+</body></html>

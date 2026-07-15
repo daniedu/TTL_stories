@@ -2,6 +2,132 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gray-950 text-white;
+@layer base {
+  body {
+    background-color: #fbfbe2;
+    background-image: radial-gradient(#dcdcc3 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    color: #1a1a1b;
+    font-family: "Courier Prime", monospace;
+  }
+
+  ::selection {
+    background: #00416a;
+    color: #ffffff;
+  }
+}
+
+@layer components {
+  .perforated-edge {
+    mask-image: radial-gradient(circle at 10px, transparent 6px, black 7px);
+    mask-size: 20px 100%;
+    mask-position: -10px center;
+  }
+
+  .perforated-bottom {
+    mask-image: radial-gradient(circle 8px at 12px 100%, transparent 8px, black 8px);
+    mask-size: 24px 24px;
+  }
+
+  .paper-texture {
+    background-color: #f5f5dc;
+    position: relative;
+  }
+
+  .paper-texture::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  .paper-dot-grid {
+    background-color: #fbfbe2;
+    background-image: radial-gradient(#1a1a1b11 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .postmark {
+    border: 2px double #1a1a1b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-5deg);
+  }
+
+  .wax-seal {
+    width: 56px;
+    height: 56px;
+    background: #ba002a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 0px 0px #410008;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+
+  .wax-seal:active {
+    transform: scale(0.95) translateY(2px);
+    box-shadow: 0px 0px 0px 0px #410008;
+  }
+
+  .rubber-stamp {
+    position: relative;
+    transform: rotate(-2deg);
+    transition: all 0.2s ease;
+  }
+
+  .rubber-stamp:active {
+    transform: scale(0.95) rotate(0deg);
+  }
+
+  .tab-active {
+    background-color: #f5f5dc !important;
+    border-bottom: none !important;
+    z-index: 20;
+    margin-bottom: -2px;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #efefd7;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #1a1a1b;
+  }
+
+  .lined-textarea {
+    background-image: linear-gradient(
+      transparent,
+      transparent 31px,
+      #1a1a1b 31px
+    );
+    background-size: 100% 32px;
+    line-height: 32px;
+  }
+
+  .ink-bleed {
+    filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='ink'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='3'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='2'/%3E%3C/filter%3E%3C/svg%3E#ink");
+  }
 }

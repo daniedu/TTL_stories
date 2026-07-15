@@ -14,10 +14,13 @@ export default function AuthPanel() {
   if (loading) return null;
   if (user && !user.isAnonymous) {
     return (
-      <div className="flex items-center gap-2 text-xs text-gray-400">
-        <span>{user.displayName || user.email}</span>
-        <button onClick={logout} className="hover:text-white">
-          Sign out
+      <div className="flex items-center gap-2 font-metadata text-ink-black">
+        <span className="opacity-60">{user.displayName || user.email}</span>
+        <button
+          onClick={logout}
+          className="border border-ink-black px-2 py-0.5 hover:bg-ink-black hover:text-paper-cream transition-colors active:translate-y-0.5"
+        >
+          SIGN OUT
         </button>
       </div>
     );
@@ -25,14 +28,16 @@ export default function AuthPanel() {
 
   if (user?.isAnonymous) {
     return (
-      <div className="flex flex-col gap-2 text-xs">
-        <p className="text-gray-500">Anonymous</p>
-        <button
-          onClick={() => setMode(mode === "login" ? "register" : "login")}
-          className="text-blue-400 hover:text-blue-300"
-        >
-          {mode === "login" ? "Sign in" : "Create account"}
-        </button>
+      <div className="flex flex-col gap-2 font-metadata">
+        <div className="flex items-center gap-2">
+          <span className="text-ink-black/60">ANONYMOUS</span>
+          <button
+            onClick={() => setMode(mode === "login" ? "register" : "login")}
+            className="border border-ink-black px-2 py-0.5 text-ink-black hover:bg-airmail-blue hover:text-on-primary transition-colors active:translate-y-0.5"
+          >
+            {mode === "login" ? "SIGN IN" : "CREATE"}
+          </button>
+        </div>
         {mode === "register" && (
           <form
             onSubmit={async (e) => {
@@ -44,34 +49,34 @@ export default function AuthPanel() {
                 setError((err as Error).message);
               }
             }}
-            className="flex flex-col gap-2"
+            className="flex flex-col gap-2 p-3 border-2 border-ink-black bg-surface-container-low"
           >
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Display name"
-              className="rounded border border-gray-700 bg-gray-800 px-2 py-1 text-xs text-white"
+              placeholder="DISPLAY NAME"
+              className="border-b-2 border-ink-black bg-transparent px-2 py-1 font-body-md text-ink-black placeholder:text-ink-black/30 focus:outline-none focus:border-airmail-blue"
             />
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
+              placeholder="EMAIL"
               type="email"
-              className="rounded border border-gray-700 bg-gray-800 px-2 py-1 text-xs text-white"
+              className="border-b-2 border-ink-black bg-transparent px-2 py-1 font-body-md text-ink-black placeholder:text-ink-black/30 focus:outline-none focus:border-airmail-blue"
             />
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
+              placeholder="PASSWORD"
               type="password"
-              className="rounded border border-gray-700 bg-gray-800 px-2 py-1 text-xs text-white"
+              className="border-b-2 border-ink-black bg-transparent px-2 py-1 font-body-md text-ink-black placeholder:text-ink-black/30 focus:outline-none focus:border-airmail-blue"
             />
-            {error && <p className="text-red-400">{error}</p>}
+            {error && <p className="text-stamp-red font-metadata">{error}</p>}
             <button
               type="submit"
-              className="rounded bg-blue-600 px-2 py-1 text-white hover:bg-blue-700"
+              className="bg-airmail-blue text-on-primary border-2 border-ink-black px-3 py-1 font-label-caps active:translate-y-0.5 transition-transform"
             >
-              Create account
+              CREATE ACCOUNT
             </button>
           </form>
         )}
@@ -86,28 +91,28 @@ export default function AuthPanel() {
                 setError((err as Error).message);
               }
             }}
-            className="flex flex-col gap-2"
+            className="flex flex-col gap-2 p-3 border-2 border-ink-black bg-surface-container-low"
           >
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
+              placeholder="EMAIL"
               type="email"
-              className="rounded border border-gray-700 bg-gray-800 px-2 py-1 text-xs text-white"
+              className="border-b-2 border-ink-black bg-transparent px-2 py-1 font-body-md text-ink-black placeholder:text-ink-black/30 focus:outline-none focus:border-airmail-blue"
             />
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
+              placeholder="PASSWORD"
               type="password"
-              className="rounded border border-gray-700 bg-gray-800 px-2 py-1 text-xs text-white"
+              className="border-b-2 border-ink-black bg-transparent px-2 py-1 font-body-md text-ink-black placeholder:text-ink-black/30 focus:outline-none focus:border-airmail-blue"
             />
-            {error && <p className="text-red-400">{error}</p>}
+            {error && <p className="text-stamp-red font-metadata">{error}</p>}
             <button
               type="submit"
-              className="rounded bg-blue-600 px-2 py-1 text-white hover:bg-blue-700"
+              className="bg-airmail-blue text-on-primary border-2 border-ink-black px-3 py-1 font-label-caps active:translate-y-0.5 transition-transform"
             >
-              Sign in
+              SIGN IN
             </button>
           </form>
         )}

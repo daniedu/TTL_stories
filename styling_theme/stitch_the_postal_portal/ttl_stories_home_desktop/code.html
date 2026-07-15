@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TTL STORIES | CORRESPONDENCE POST</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Courier+Prime:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#474647",
+                    "surface-variant": "#e4e4cc",
+                    "airmail-blue": "#00416A",
+                    "surface-bright": "#fbfbe2",
+                    "secondary-fixed": "#ffdad9",
+                    "on-surface-variant": "#42474e",
+                    "outline": "#72777f",
+                    "surface-container-low": "#f5f5dc",
+                    "paper-cream": "#F5F5DC",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#303221",
+                    "on-error": "#ffffff",
+                    "tertiary": "#282829",
+                    "surface-dim": "#dbdcc3",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#cfe5ff",
+                    "tertiary-container": "#3e3e3f",
+                    "primary-container": "#00416a",
+                    "on-secondary-fixed-variant": "#92001f",
+                    "background": "#fbfbe2",
+                    "surface-container-highest": "#e4e4cc",
+                    "on-surface": "#1b1d0e",
+                    "surface-container": "#efefd7",
+                    "stamp-red": "#C60C30",
+                    "outline-variant": "#c2c7cf",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#e0273f",
+                    "secondary": "#ba002a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#31628d",
+                    "on-tertiary-container": "#aba9aa",
+                    "secondary-fixed-dim": "#ffb3b2",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#c8c6c7",
+                    "on-primary-container": "#7faddc",
+                    "tertiary-fixed": "#e5e2e3",
+                    "on-secondary-fixed": "#410008",
+                    "inverse-on-surface": "#f2f2d9",
+                    "on-tertiary": "#ffffff",
+                    "ink-black": "#1A1A1B",
+                    "on-primary-fixed-variant": "#114a73",
+                    "surface": "#fbfbe2",
+                    "on-primary-fixed": "#001d33",
+                    "primary": "#002a48",
+                    "on-background": "#1b1d0e",
+                    "primary-fixed-dim": "#9ccbfb",
+                    "inverse-primary": "#9ccbfb",
+                    "on-tertiary-fixed": "#1b1b1c",
+                    "on-secondary-container": "#fffbff",
+                    "surface-container-high": "#eaead1",
+                    "postmark-gray": "#A6A697"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "container-max": "640px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Space Mono"],
+                    "label-caps": ["JetBrains Mono"],
+                    "headline-md": ["Space Mono"],
+                    "headline-lg-mobile": ["Space Mono"],
+                    "body-lg": ["Courier Prime"],
+                    "body-md": ["Courier Prime"],
+                    "metadata": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "metadata": ["11px", {"lineHeight": "14px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .perforated-edge {
+            background-image: radial-gradient(circle at 10px 10px, transparent 10px, #F5F5DC 10px);
+            background-size: 20px 20px;
+        }
+
+        .ledger-line {
+            background-image: repeating-linear-gradient(transparent, transparent 23px, #e4e4cc 23px, #e4e4cc 24px);
+        }
+
+        .ink-bleed {
+            filter: url(#ink-filter);
+        }
+
+        .stamp-effect {
+            transform: rotate(-3deg);
+            mix-blend-mode: multiply;
+            opacity: 0.8;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F5F5DC;
+            border-left: 1px solid #1A1A1B;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1A1A1B;
+        }
+    </style>
+</head>
+<body class="bg-background text-ink-black font-body-md selection:bg-airmail-blue selection:text-white overflow-hidden">
+<!-- SVG Filter for Ink Bleed effect -->
+<svg class="hidden">
+<defs>
+<filter id="ink-filter">
+<feturbulence basefrequency="0.05" numoctaves="2" result="noise" type="fractalNoise"></feturbulence>
+<fedisplacementmap in="SourceGraphic" in2="noise" scale="1.5"></fedisplacementmap>
+</filter>
+</defs>
+</svg>
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-on-tertiary flex justify-between items-center px-margin-mobile w-full h-16 border-b-2 border-ink-black dark:border-ink-black fixed top-0 z-[100]">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-primary hover:bg-surface-container-highest transition-transform active:translate-y-0.5 p-2">menu</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-ink-black dark:text-ink-black uppercase tracking-tighter">TTL STORIES</h1>
+</div>
+<!-- Desktop Navigation Integration (from Shared Components Logic) -->
+<nav class="hidden md:flex gap-1 h-full items-center">
+<a class="flex flex-col items-center justify-center bg-airmail-blue text-on-primary border-2 border-ink-black px-6 h-12 font-label-caps text-label-caps transition-all active:scale-95" href="#">
+                MAP
+            </a>
+<a class="flex flex-col items-center justify-center text-ink-black hover:bg-surface-dim px-6 h-12 font-label-caps text-label-caps transition-all active:scale-95" href="#">
+                FEED
+            </a>
+<a class="flex flex-col items-center justify-center text-ink-black hover:bg-surface-dim px-6 h-12 font-label-caps text-label-caps transition-all active:scale-95" href="#">
+                GLOBAL
+            </a>
+</nav>
+<div class="flex items-center gap-2">
+<div class="hidden lg:block text-right mr-4">
+<p class="font-metadata text-metadata uppercase opacity-60">Session Active</p>
+<p class="font-label-caps text-[10px]">OFFICE NO. 402</p>
+</div>
+<button class="material-symbols-outlined text-primary dark:text-primary hover:bg-surface-container-highest transition-transform active:translate-y-0.5 p-2">account_circle</button>
+</div>
+</header>
+<main class="flex h-screen pt-16">
+<!-- Sidebar: Story Feed -->
+<aside class="w-96 flex-shrink-0 border-r-2 border-ink-black bg-paper-cream overflow-y-auto custom-scrollbar flex flex-col">
+<div class="p-4 border-b-2 border-ink-black flex justify-between items-center bg-surface-container">
+<span class="font-label-caps text-label-caps">RECENT TELEGRAMS</span>
+<span class="font-metadata text-metadata bg-ink-black text-white px-2 py-0.5">EST. 1924</span>
+</div>
+<div class="flex-1 ledger-line">
+<!-- Story Card 1 -->
+<div class="p-6 border-b-2 border-ink-black hover:bg-surface-bright transition-colors relative group cursor-pointer">
+<div class="absolute top-4 right-4 w-10 h-12 border-2 border-dashed border-ink-black flex flex-col items-center justify-center bg-white stamp-effect group-hover:rotate-3 transition-transform">
+<span class="text-[8px] font-bold leading-none">POSTAGE</span>
+<span class="material-symbols-outlined text-airmail-blue text-lg" style="font-variation-settings: 'FILL' 1;">public</span>
+<span class="text-[8px] font-bold leading-none">12.5¢</span>
+</div>
+<p class="font-metadata text-metadata text-postmark-gray mb-1">NO. 8821 / LONDON</p>
+<h3 class="font-headline-md text-headline-md mb-2 leading-tight">THE RAIN IN KENSINGTON</h3>
+<p class="font-body-md text-body-md text-ink-black/80 line-clamp-3 mb-4">The droplets hit the pavement like Morse code. I waited under the green awning of the florist, watching the red buses blur into streaks of crimson against the gray afternoon...</p>
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] bg-secondary-fixed text-on-secondary-fixed px-2 py-1 border border-ink-black">TOP SECRET</span>
+<span class="font-metadata text-metadata italic">-- Station Master</span>
+</div>
+</div>
+<!-- Story Card 2 -->
+<div class="p-6 border-b-2 border-ink-black hover:bg-surface-bright transition-colors relative group cursor-pointer">
+<div class="absolute top-4 right-4 w-10 h-12 border-2 border-dashed border-ink-black flex flex-col items-center justify-center bg-white stamp-effect -rotate-6 group-hover:rotate-0 transition-transform">
+<span class="text-[8px] font-bold leading-none">PAID</span>
+<span class="material-symbols-outlined text-stamp-red text-lg">local_post_office</span>
+<span class="text-[8px] font-bold leading-none">AIRMAIL</span>
+</div>
+<p class="font-metadata text-metadata text-postmark-gray mb-1">NO. 4419 / TOKYO</p>
+<h3 class="font-headline-md text-headline-md mb-2 leading-tight">NEON ETCHINGS</h3>
+<p class="font-body-md text-body-md text-ink-black/80 line-clamp-3 mb-4">Electronic hums replace the silence of the shrine. Shinjuku breathes in neon and exhales exhaust. I found a small letter tucked into a vending machine...</p>
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] border border-ink-black px-2 py-1">REGISTERED</span>
+<span class="font-metadata text-metadata italic">-- Anonymous</span>
+</div>
+</div>
+<!-- Story Card 3 (Expired/Watermarked Style) -->
+<div class="p-6 border-b-2 border-ink-black hover:bg-surface-bright transition-colors relative group cursor-pointer overflow-hidden">
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-10 select-none">
+<span class="text-7xl font-bold border-8 border-ink-black p-4 rotate-12">POSTED</span>
+</div>
+<p class="font-metadata text-metadata text-postmark-gray mb-1">NO. 1022 / BERLIN</p>
+<h3 class="font-headline-md text-headline-md mb-2 leading-tight">WALL ECHOES</h3>
+<p class="font-body-md text-body-md text-ink-black/80 line-clamp-3 mb-4">Concrete still speaks if you press your ear close enough. The graffiti is a new layer of skin on an old ghost. Tonight, the wind smells like coal and change...</p>
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] border border-ink-black px-2 py-1">ARCHIVED</span>
+<span class="font-metadata text-metadata italic">-- Echo-01</span>
+</div>
+</div>
+</div>
+<!-- Footer-ish Action -->
+<div class="p-4 bg-ink-black text-white text-center">
+<button class="font-label-caps text-label-caps tracking-widest hover:text-airmail-blue transition-colors">VIEW ALL ARCHIVES (2,401)</button>
+</div>
+</aside>
+<!-- Full-Height Map View -->
+<section class="flex-1 relative bg-surface-dim">
+<!-- Map Placeholder -->
+<div class="w-full h-full bg-surface-container-highest overflow-hidden flex items-center justify-center grayscale contrast-125" data-alt="A vintage style architectural map of a major city with high contrast black ink lines on aged yellowed parchment paper. The map features dense grid patterns, river veins, and tiny stamp-like markers. The lighting is flat and even, mimicking a technical drawing or a lithograph from the early 20th century. Atmospheric ink bleed effects are visible at the edges of the streets and rivers." data-location="London" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB68aHA0ZSyhj3RiXSz0kYt9HsSc1K5Gz1bd7HzJBONB1sLFyp2-YmXINxR-ETtgqKQJVya5V0_-DNNRKm5bLNh6eX9tVKdZbrYdeiV0ZDexdl7iDZwwIXrYAIFI1pgyZOJgvcdOHeDuhbwB86ZBOkoM4SFz3yV00snXwjwI27bszhhhvutBtY0Yv3BkPpUu9lsU5VQrsvALa7nalh3g-WwokqCzkHN-cn19CD4MgO8ZCKuOeQBM6tJQePgEg9qRulgqDbF6EdXmvCz')">
+</div>
+<!-- UI Overlay: Map Pins -->
+<div class="absolute inset-0 pointer-events-none">
+<!-- Pin 1 -->
+<div class="absolute top-1/4 left-1/3 pointer-events-auto group">
+<div class="relative flex flex-col items-center">
+<div class="bg-airmail-blue text-white p-2 border-2 border-ink-black font-label-caps text-[10px] mb-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                            KENSINGTON: ACTIVE
+                        </div>
+<div class="w-6 h-6 bg-white border-2 border-ink-black rounded-full flex items-center justify-center shadow-[2px_2px_0px_#1A1A1B] cursor-pointer hover:scale-110 transition-transform">
+<div class="w-2 h-2 bg-airmail-blue rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Pin 2 -->
+<div class="absolute top-1/2 left-2/3 pointer-events-auto group">
+<div class="relative flex flex-col items-center">
+<div class="bg-stamp-red text-white p-2 border-2 border-ink-black font-label-caps text-[10px] mb-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                            SOHO: 4 UNREAD
+                        </div>
+<div class="w-6 h-6 bg-white border-2 border-ink-black rounded-full flex items-center justify-center shadow-[2px_2px_0px_#1A1A1B] cursor-pointer hover:scale-110 transition-transform">
+<div class="w-2 h-2 bg-stamp-red rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Controls Overlay -->
+<div class="absolute bottom-8 right-8 flex flex-col gap-2">
+<button class="w-12 h-12 bg-white border-2 border-ink-black flex items-center justify-center hover:bg-surface-variant transition-colors shadow-[4px_4px_0px_#1A1A1B] active:shadow-none active:translate-x-1 active:translate-y-1">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="w-12 h-12 bg-white border-2 border-ink-black flex items-center justify-center hover:bg-surface-variant transition-colors shadow-[4px_4px_0px_#1A1A1B] active:shadow-none active:translate-x-1 active:translate-y-1">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<button class="w-12 h-12 bg-airmail-blue text-white border-2 border-ink-black flex items-center justify-center hover:bg-primary transition-colors shadow-[4px_4px_0px_#1A1A1B] active:shadow-none active:translate-x-1 active:translate-y-1 mt-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">my_location</span>
+</button>
+</div>
+<!-- Bottom Sheet / PostForm (Mandate Style) -->
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] bg-paper-cream border-x-2 border-t-2 border-ink-black p-6 shadow-[0_-10px_25px_-5px_rgba(0,0,0,0.1)] rounded-t-xl z-50 transition-transform transform translate-y-2 group hover:translate-y-0">
+<div class="flex items-center justify-between mb-6 border-b-2 border-ink-black pb-2">
+<h2 class="font-headline-md text-headline-md uppercase">TELEGRAM FORM</h2>
+<span class="font-metadata text-metadata">FORM NO. 12-B</span>
+</div>
+<div class="grid grid-cols-2 gap-6 mb-4">
+<div class="border-b-2 border-ink-black pb-1">
+<label class="block font-label-caps text-[10px] text-postmark-gray">TO: LOCATION</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-headline-md text-headline-md placeholder:opacity-20" placeholder="CHELSEA, LONDON" type="text"/>
+</div>
+<div class="border-b-2 border-ink-black pb-1">
+<label class="block font-label-caps text-[10px] text-postmark-gray">FROM: USER</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-headline-md text-headline-md" readonly="" type="text" value="STATION MASTER"/>
+</div>
+</div>
+<div class="border-2 border-ink-black p-4 bg-white/50 mb-6 min-h-[120px] relative">
+<textarea class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-body-lg resize-none min-h-[100px] placeholder:opacity-30" placeholder="STOP. TYPE YOUR MESSAGE HERE. STOP."></textarea>
+<div class="absolute bottom-2 right-2 font-metadata text-metadata opacity-40 uppercase">Word Count: 0/250</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex gap-4">
+<button class="flex items-center gap-1 font-label-caps text-[10px] hover:text-stamp-red transition-colors">
+<span class="material-symbols-outlined text-sm">attach_file</span> ENCLOSE IMAGE
+                        </button>
+<button class="flex items-center gap-1 font-label-caps text-[10px] hover:text-airmail-blue transition-colors">
+<span class="material-symbols-outlined text-sm">visibility_off</span> PRIVATE
+                        </button>
+</div>
+<button class="bg-stamp-red text-white px-8 py-3 font-headline-md text-headline-md border-2 border-ink-black hover:bg-secondary active:scale-95 transition-all shadow-[4px_4px_0px_#1A1A1B] active:shadow-none uppercase">
+                        TRANSMIT
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Micro-interaction script -->
+<script>
+        // Simple hover effects for pins to simulate "ink" response
+        document.querySelectorAll('.group').forEach(pin => {
+            pin.addEventListener('mouseenter', () => {
+                // Potential for further micro-interaction logic
+            });
+        });
+
+        // Form focus simulation
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', (e) => {
+            const count = e.target.value.split(/\s+/).filter(w => w.length > 0).length;
+            document.querySelector('.font-metadata.opacity-40').innerText = `Word Count: ${count}/250`;
+        });
+    </script>
+</body></html>

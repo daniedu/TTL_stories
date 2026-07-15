@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TTL STORIES - Service Record</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .perforated-edge {
+            background-image: radial-gradient(circle, transparent 40%, #F5F5DC 41%);
+            background-size: 12px 12px;
+            background-position: -6px -6px;
+        }
+        .ink-bleed {
+            filter: url(#ink-bleed-filter);
+        }
+        .stamp-rotate {
+            transform: rotate(-3deg);
+        }
+        body {
+            background-color: #fbfbe2;
+            color: #1A1A1B;
+            font-family: 'Courier Prime', monospace;
+        }
+        .ledger-line {
+            background-image: repeating-linear-gradient(#1A1A1B 0 1px, transparent 1px 100%);
+            background-size: 100% 28px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#303221",
+                        "surface": "#fbfbe2",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffdad9",
+                        "primary-fixed-dim": "#9ccbfb",
+                        "postmark-gray": "#A6A697",
+                        "surface-variant": "#e4e4cc",
+                        "outline-variant": "#c2c7cf",
+                        "tertiary-fixed": "#e5e2e3",
+                        "tertiary-container": "#3e3e3f",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#9ccbfb",
+                        "inverse-on-surface": "#f2f2d9",
+                        "background": "#fbfbe2",
+                        "surface-bright": "#fbfbe2",
+                        "on-secondary-fixed-variant": "#92001f",
+                        "paper-cream": "#F5F5DC",
+                        "surface-dim": "#dbdcc3",
+                        "primary-container": "#00416a",
+                        "on-surface": "#1b1d0e",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f5f5dc",
+                        "secondary": "#ba002a",
+                        "on-primary-fixed-variant": "#114a73",
+                        "tertiary-fixed-dim": "#c8c6c7",
+                        "primary": "#002a48",
+                        "on-secondary-fixed": "#410008",
+                        "surface-container-high": "#eaead1",
+                        "surface-container": "#efefd7",
+                        "on-primary-fixed": "#001d33",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#e0273f",
+                        "on-tertiary-fixed-variant": "#474647",
+                        "ink-black": "#1A1A1B",
+                        "on-tertiary-fixed": "#1b1b1c",
+                        "on-tertiary-container": "#aba9aa",
+                        "airmail-blue": "#00416A",
+                        "surface-tint": "#31628d",
+                        "secondary-fixed-dim": "#ffb3b2",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#cfe5ff",
+                        "surface-container-highest": "#e4e4cc",
+                        "on-secondary-container": "#fffbff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1b1d0e",
+                        "on-error": "#ffffff",
+                        "outline": "#72777f",
+                        "on-surface-variant": "#42474e",
+                        "on-primary-container": "#7faddc",
+                        "tertiary": "#282829",
+                        "stamp-red": "#C60C30"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "container-max": "640px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Space Mono"],
+                        "body-lg": ["Courier Prime"],
+                        "body-md": ["Courier Prime"],
+                        "label-caps": ["JetBrains Mono"],
+                        "metadata": ["JetBrains Mono"],
+                        "headline-md": ["Space Mono"],
+                        "headline-lg-mobile": ["Space Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "metadata": ["11px", {"lineHeight": "14px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-ink-black flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-on-tertiary border-b-2 border-ink-black sticky top-0 z-50 flex justify-between items-center px-margin-mobile w-full h-16">
+<button class="active:translate-y-0.5 transition-transform hover:bg-surface-container-highest p-2">
+<span class="material-symbols-outlined text-ink-black" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-ink-black uppercase tracking-tighter">TTL STORIES</h1>
+<button class="active:translate-y-0.5 transition-transform hover:bg-surface-container-highest p-2">
+<span class="material-symbols-outlined text-secondary" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col items-center py-8 px-margin-mobile max-w-4xl mx-auto w-full mb-24">
+<!-- Profile Section: Service Record Header -->
+<section class="w-full mb-12 border-4 border-ink-black bg-paper-cream p-6 shadow-[8px_8px_0px_0px_rgba(26,26,27,1)] relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-ink-black opacity-10"></div>
+<div class="flex flex-col md:flex-row gap-8 items-start relative z-10">
+<!-- Circular Postmark Avatar -->
+<div class="relative flex-shrink-0">
+<div class="w-32 h-32 rounded-full border-4 border-dashed border-ink-black p-1 flex items-center justify-center stamp-rotate bg-white">
+<div class="w-28 h-28 rounded-full border-2 border-ink-black overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="A vintage-style sepia toned portrait of a man in an early 20th-century station master uniform, wearing a peaked cap with a metallic emblem. The lighting is harsh and dramatic, mimicking old film photography. The image is framed within a circular postmark with faded ink textures and faint date stamp overlays, consistent with a correspondence post aesthetic. Off-white and ink-black tones dominate the composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN8F0DfiB1SQ6btDVr1-3JtLD71ClGvS7dCEtBEWtOXjTD_lYzkp2qErQ-sB7zGD1Fcd0H3T--JmtLn83lA_KQBU1p7Z3oHqgY0J7RzIJI9uA7DS_uI_LB7Ykoxlr3gYy7xodYTY6W58aIb1qHq63FznqP6huCdj6KNy0ZOM_kv9NnJnmesSVKwu190tYSNsF9wuf0LchQI7yQLy2QNN-lP1robtguucSE3YbJFqXCxTwO-6SNzpEA1IhtdRVtY6VKwl9blCpc1C-S"/>
+</div>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-stamp-red text-on-primary px-3 py-1 font-label-caps text-label-caps border-2 border-ink-black stamp-rotate">
+                        VERIFIED
+                    </div>
+</div>
+<!-- Profile Info & Ledger Stats -->
+<div class="flex-1 w-full"><div class="mb-6"><span class="font-label-caps text-label-caps text-postmark-gray uppercase tracking-widest">Personal Journal &amp; Ledger</span><h2 class="font-headline-lg text-headline-lg text-ink-black mt-1">ARTHUR PENHALIGON</h2><p class="font-metadata text-metadata italic opacity-70">Station Master since the Great Fog of '24</p></div><div class="grid grid-cols-3 gap-4 py-4 border-y-2 border-ink-black border-dashed"><div class="text-center"><span class="block font-headline-md text-ink-black">1.2k</span><span class="font-label-caps text-[10px] text-postmark-gray uppercase">Dispatches</span></div><div class="text-center border-x border-ink-black/20"><span class="block font-headline-md text-ink-black">42</span><span class="font-label-caps text-[10px] text-postmark-gray uppercase">Waypoints</span></div><div class="text-center"><span class="block font-headline-md text-stamp-red">03</span><span class="font-label-caps text-[10px] text-postmark-gray uppercase">Pending</span></div></div><div class="mt-4 flex items-center gap-2"><span class="material-symbols-outlined text-postmark-gray text-sm">location_on</span><span class="font-metadata text-metadata">Current Sector: 402 - Central Junction</span></div></div>
+</div>
+</section>
+<!-- List Section: Telegram History -->
+<div class="w-full flex items-center justify-between mb-4 px-2">
+<h3 class="font-headline-md text-headline-md uppercase border-b-2 border-ink-black inline-block">Timeline of Entries</h3>
+<span class="material-symbols-outlined text-ink-black" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="w-full space-y-6 relative"><div class="absolute left-6 top-0 bottom-0 w-0.5 bg-ink-black/10 z-0 ml-12"><div class="absolute -left-8 top-6 w-4 h-4 rounded-full bg-ink-black border-2 border-paper-cream z-10"></div></div>
+<!-- Telegram Item 1 -->
+<div class="bg-paper-cream border-2 border-ink-black shadow-[4px_4px_0px_0px_rgba(26,26,27,1)] p-4 relative ml-12"><div class="absolute -left-8 top-6 w-4 h-4 rounded-full bg-ink-black border-2 border-paper-cream z-10"></div>
+<div class="absolute top-0 right-0 w-12 h-12 bg-white border-l-2 border-b-2 border-ink-black flex items-center justify-center">
+<span class="material-symbols-outlined text-stamp-red" data-icon="send">send</span>
+</div>
+<div class="flex justify-between items-start mb-2 pr-12">
+<div class="font-label-caps text-label-caps text-ink-black bg-airmail-blue/10 px-2 border border-ink-black">
+                        REF NO: 882-XJ
+                    </div>
+<span class="font-metadata text-metadata">12 OCT 2023 - 14:22</span>
+</div>
+<p class="font-body-md text-body-md leading-relaxed mb-4 ledger-line pt-1">
+                    ARRIVED AT THE OLD LIGHTHOUSE STOP MIST IS THICK STOP CANNOT SEE THE HORIZON STOP THE LANTERN IS BROKEN BUT THE LIGHT STILL SHINES FROM WITHIN STOP ADVISE CAUTION STOP
+                </p>
+<div class="flex justify-between items-center border-t border-ink-black pt-2">
+<div class="flex gap-2">
+<span class="font-label-caps text-[10px] bg-ink-black text-white px-2 py-0.5">PUBLIC</span>
+<span class="font-label-caps text-[10px] border border-ink-black px-2 py-0.5">MISTY PEAK</span>
+</div>
+<button class="font-label-caps text-label-caps text-airmail-blue hover:underline">VIEW FULL TELEGRAM</button>
+</div>
+</div>
+<!-- Telegram Item 2 -->
+<div class="bg-white border-2 border-ink-black shadow-[4px_4px_0px_0px_rgba(26,26,27,1)] p-4 relative ml-12"><div class="absolute -left-8 top-6 w-4 h-4 rounded-full bg-ink-black border-2 border-paper-cream z-10"></div>
+<div class="absolute top-0 right-0 w-12 h-12 border-l-2 border-b-2 border-ink-black flex items-center justify-center bg-paper-cream">
+<span class="material-symbols-outlined text-ink-black" data-icon="description">description</span>
+</div>
+<div class="flex justify-between items-start mb-2 pr-12">
+<div class="font-label-caps text-label-caps text-ink-black bg-stamp-red/10 px-2 border border-ink-black">
+                        REF NO: 104-QL
+                    </div>
+<span class="font-metadata text-metadata">09 OCT 2023 - 09:15</span>
+</div>
+<p class="font-body-md text-body-md leading-relaxed mb-4 italic opacity-80">
+                    "Found a small ivory key tucked inside a hollowed-out book at the central library. It feels warm to the touch. I think it opens the archive room in the basement..."
+                </p>
+<div class="flex justify-between items-center border-t border-ink-black pt-2">
+<div class="flex gap-2">
+<span class="font-label-caps text-[10px] bg-stamp-red text-white px-2 py-0.5">PRIVATE</span>
+<span class="font-label-caps text-[10px] border border-ink-black px-2 py-0.5">DUSTED SHELVES</span>
+</div>
+<button class="font-label-caps text-label-caps text-airmail-blue hover:underline">RECOVER LOG</button>
+</div>
+</div>
+<!-- Telegram Item 3 (Small Receipt style) -->
+<div class="bg-paper-cream border-2 border-ink-black shadow-[4px_4px_0px_0px_rgba(26,26,27,1)] p-4 relative overflow-hidden ml-12"><div class="absolute -left-8 top-6 w-4 h-4 rounded-full bg-ink-black border-2 border-paper-cream z-10"></div>
+<div class="perforated-edge absolute bottom-0 left-0 w-full h-2 transform rotate-180"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-headline-md text-headline-md leading-none">MEMO</h4>
+<span class="font-metadata text-metadata">INTERNAL CIRCULATION ONLY</span>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps">STATION 402</span><br/>
+<span class="font-metadata text-metadata">TRANSIT AUTH. REQ.</span>
+</div>
+</div>
+<p class="font-body-md text-body-md bg-white p-2 border border-ink-black border-dashed mb-2">
+                    REQUESTING CLEARANCE FOR SECTOR 7. UNUSUAL ACTIVITY DETECTED AT THE RAILWAY JUNCTION. 
+                </p>
+<div class="flex justify-end font-metadata text-metadata opacity-60">
+                    -- END OF ENTRY --
+                </div>
+</div>
+</div>
+</main>
+<!-- NavigationDrawer (Mobile Sidebar Mock - Hidden by default) -->
+<aside class="fixed top-0 left-0 h-full w-80 bg-paper-cream border-r-4 border-ink-black z-[100] transform -translate-x-full transition-transform duration-300 flex flex-col" id="nav-drawer">
+<div class="p-6 border-b border-ink-black">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full border-2 border-ink-black bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of a postmark stamp with the text STATION MASTER centered, blurred ink background, vintage off-white paper texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXWR3zVHMn9xce3Ip5UnbUbESi6z3RhHRKh0N1b9xRE89fA1JiOGuCtwwx04lqkAWUpFEkRWGOqrh4kjr2Negd7xqobwwKfnDbN0-sEqBSQAUKHrChyIPPFdEZ9CBoIJBIULCSTW2PR0ROSYwP4tpNdIYXfjN6eqMcI0P61JE9fNKk_EKmWPGqwZLhGUPDEJ0ccAAXorwM7ANKtcwUCnOTRLfDlcU5ImSdIhFVIds93gbzlLneZOL-ihX_AtsZ97z_jzBXPvgEWdaG"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-stamp-red">STATION MASTER</h2>
+<p class="font-metadata text-metadata">OFFICE NO. 402</p>
+</div>
+</div>
+<p class="font-label-caps text-[10px] text-postmark-gray">EST. 1924</p>
+</div>
+<nav class="flex-1 divide-y divide-ink-black overflow-y-auto">
+<a class="flex items-center gap-4 px-6 py-4 text-ink-black hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-body-md text-body-md">POSTBOX</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-ink-black hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span class="font-body-md text-body-md">TELEGRAMS</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-ink-black hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="import_contacts">import_contacts</span>
+<span class="font-body-md text-body-md">LEDGER</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 bg-secondary text-on-secondary font-bold border-y-2 border-ink-black" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-md text-body-md">ARCHIVE</span>
+</a>
+</nav>
+<div class="p-4 border-t-2 border-ink-black text-center">
+<button class="font-label-caps text-label-caps text-ink-black border-2 border-ink-black px-4 py-2 hover:bg-ink-black hover:text-white transition-all active:scale-95" id="close-drawer">CLOSE LEDGER</button>
+</div>
+</aside>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-paper-cream border-t-2 border-ink-black">
+<button class="flex flex-col items-center justify-center text-ink-black p-2 mx-1 hover:bg-surface-dim transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-caps text-label-caps">MAP</span>
+</button>
+<button class="flex flex-col items-center justify-center text-ink-black p-2 mx-1 hover:bg-surface-dim transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-caps text-label-caps">FEED</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-airmail-blue text-on-primary rounded-none border-2 border-ink-black p-2 mx-1 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="font-label-caps text-label-caps">PROFILE</span>
+</button>
+<button class="flex flex-col items-center justify-center text-ink-black p-2 mx-1 hover:bg-surface-dim transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+<span class="font-label-caps text-label-caps">GLOBAL</span>
+</button>
+</nav>
+<!-- Floating Action Button - Only on Profile -->
+<button class="fixed bottom-24 right-6 w-16 h-16 bg-stamp-red border-2 border-ink-black shadow-[4px_4px_0px_0px_rgba(26,26,27,1)] flex items-center justify-center active:scale-95 active:shadow-none transition-all group">
+<span class="material-symbols-outlined text-white text-3xl group-hover:rotate-12 transition-transform" data-icon="edit">edit</span>
+</button>
+<!-- Overlay -->
+<div class="fixed inset-0 bg-ink-black/50 z-40 hidden backdrop-blur-sm" id="overlay"></div>
+<script>
+        const menuBtn = document.querySelector('[data-icon="menu"]').parentElement;
+        const navDrawer = document.getElementById('nav-drawer');
+        const overlay = document.getElementById('overlay');
+        const closeBtn = document.getElementById('close-drawer');
+
+        menuBtn.addEventListener('click', () => {
+            navDrawer.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        });
+
+        const closeDrawer = () => {
+            navDrawer.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        };
+
+        overlay.addEventListener('click', closeDrawer);
+        closeBtn.addEventListener('click', closeDrawer);
+
+        // Simple ledger interaction sound simulation
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('Stamp effect triggered');
+            });
+        });
+    </script>
+<!-- SVG Filters for tactile feel -->
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0;">
+<filter id="ink-bleed-filter">
+<feturbulence basefrequency="0.05" numoctaves="2" result="noise" type="fractalNoise"></feturbulence>
+<fedisplacementmap in="SourceGraphic" in2="noise" scale="1.5"></fedisplacementmap>
+</filter>
+</svg>
+</body></html>

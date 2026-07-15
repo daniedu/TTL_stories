@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TTL STORIES - COMPOSE TELEGRAM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Courier+Prime:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#474647",
+                    "surface-variant": "#e4e4cc",
+                    "airmail-blue": "#00416A",
+                    "surface-bright": "#fbfbe2",
+                    "secondary-fixed": "#ffdad9",
+                    "on-surface-variant": "#42474e",
+                    "outline": "#72777f",
+                    "surface-container-low": "#f5f5dc",
+                    "paper-cream": "#F5F5DC",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#303221",
+                    "on-error": "#ffffff",
+                    "tertiary": "#282829",
+                    "surface-dim": "#dbdcc3",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#cfe5ff",
+                    "tertiary-container": "#3e3e3f",
+                    "primary-container": "#00416a",
+                    "on-secondary-fixed-variant": "#92001f",
+                    "background": "#fbfbe2",
+                    "surface-container-highest": "#e4e4cc",
+                    "on-surface": "#1b1d0e",
+                    "surface-container": "#efefd7",
+                    "stamp-red": "#C60C30",
+                    "outline-variant": "#c2c7cf",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#e0273f",
+                    "secondary": "#ba002a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#31628d",
+                    "on-tertiary-container": "#aba9aa",
+                    "secondary-fixed-dim": "#ffb3b2",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#c8c6c7",
+                    "on-primary-container": "#7faddc",
+                    "tertiary-fixed": "#e5e2e3",
+                    "on-secondary-fixed": "#410008",
+                    "inverse-on-surface": "#f2f2d9",
+                    "on-tertiary": "#ffffff",
+                    "ink-black": "#1A1A1B",
+                    "on-primary-fixed-variant": "#114a73",
+                    "surface": "#fbfbe2",
+                    "on-primary-fixed": "#001d33",
+                    "primary": "#002a48",
+                    "on-background": "#1b1d0e",
+                    "primary-fixed-dim": "#9ccbfb",
+                    "inverse-primary": "#9ccbfb",
+                    "on-tertiary-fixed": "#1b1b1c",
+                    "on-secondary-container": "#fffbff",
+                    "surface-container-high": "#eaead1",
+                    "postmark-gray": "#A6A697"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "container-max": "640px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Space Mono"],
+                    "label-caps": ["JetBrains Mono"],
+                    "headline-md": ["Space Mono"],
+                    "headline-lg-mobile": ["Space Mono"],
+                    "body-lg": ["Courier Prime"],
+                    "body-md": ["Courier Prime"],
+                    "metadata": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "metadata": ["11px", {"lineHeight": "14px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ruled-lines {
+            background-image: linear-gradient(transparent 31px, #1A1A1B 31px, #1A1A1B 32px);
+            background-size: 100% 32px;
+            line-height: 32px;
+        }
+        .perforated-edge {
+            mask-image: radial-gradient(circle 8px at 100% 50%, transparent 8px, black 8px);
+            mask-size: 100% 32px;
+        }
+        .stamp-texture {
+            opacity: 0.15;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+        }
+        .telegram-shadow {
+            box-shadow: 12px 12px 0px 0px #1A1A1B;
+        }
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+    </style>
+</head>
+<body class="bg-surface-dim min-h-screen font-body-md text-ink-black flex items-center justify-center overflow-hidden">
+<!-- Backdrop / Dark Overlay -->
+<div class="fixed inset-0 bg-ink-black/80 backdrop-blur-sm z-0"></div>
+<!-- Main Telegram Container -->
+<div class="relative z-10 w-full max-w-[800px] mx-4 transition-transform duration-300 transform">
+<!-- The Desk Canvas (visual context) -->
+<div class="absolute -inset-10 bg-surface-container-low/20 rotate-1 -z-10 rounded-sm"></div>
+<!-- PostForm Overlay -->
+<main class="bg-paper-cream border-2 border-ink-black telegram-shadow relative flex flex-col min-h-[600px] overflow-hidden">
+<!-- Header Section (Airmail Styling) -->
+<header class="border-b-2 border-ink-black p-gutter flex flex-col gap-4 bg-paper-cream">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-ink-black opacity-60">FORM NO. 72-B</span>
+<h1 class="font-headline-lg text-headline-lg text-ink-black uppercase tracking-tighter">TELEGRAM CONVEYANCE</h1>
+</div>
+<div class="w-24 h-24 border-2 border-dashed border-ink-black flex items-center justify-center relative p-2">
+<div class="text-center">
+<span class="material-symbols-outlined text-4xl block text-ink-black">note_stack</span>
+<span class="font-metadata text-metadata block leading-none">AFFIX<br/>STAMP</span>
+</div>
+<!-- Decorative Postmark -->
+<div class="absolute -top-4 -right-4 w-16 h-16 border-2 border-stamp-red rounded-full flex items-center justify-center -rotate-12 opacity-80 pointer-events-none">
+<span class="font-label-caps text-[8px] text-stamp-red text-center">OFFICIAL<br/>DISPATCH</span>
+</div>
+</div>
+</div>
+<!-- From/To Fields -->
+<div class="grid grid-cols-2 gap-gutter">
+<div class="border-b-2 border-ink-black flex items-end pb-1">
+<label class="font-label-caps text-label-caps mr-2 pb-1">FROM:</label>
+<input class="bg-transparent border-none focus:ring-0 p-0 font-body-lg text-body-lg w-full placeholder-ink-black/30" placeholder="NAME OF SENDER" type="text" value="STATION MASTER"/>
+</div>
+<div class="border-b-2 border-ink-black flex items-end pb-1">
+<label class="font-label-caps text-label-caps mr-2 pb-1">LOCATION:</label>
+<input class="bg-transparent border-none focus:ring-0 p-0 font-body-lg text-body-lg w-full placeholder-ink-black/30" placeholder="COORDINATES/CITY" type="text" value="DISTRICT 09"/>
+</div>
+</div>
+</header>
+<!-- Message Area -->
+<div class="flex-grow p-gutter relative">
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#1A1A1B 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="relative h-full">
+<label class="font-label-caps text-label-caps block mb-4">MESSAGE CONTENTS (MAX 280 CHARS):</label>
+<div class="relative">
+<textarea class="w-full min-h-[320px] bg-transparent border-none focus:ring-0 font-body-lg text-body-lg ruled-lines resize-none overflow-hidden" id="telegram-body" maxlength="280" placeholder="TYPE YOUR MESSAGE HERE..."></textarea>
+</div>
+</div>
+</div>
+<!-- Footer Controls -->
+<footer class="border-t-2 border-ink-black bg-surface-container flex flex-col md:flex-row">
+<!-- Visibility Selector -->
+<div class="flex-grow p-4 flex items-center gap-4 border-b-2 md:border-b-0 md:border-r-2 border-ink-black">
+<span class="font-label-caps text-label-caps">CLASSIFICATION:</span>
+<div class="flex gap-2">
+<!-- Public Stamp -->
+<button class="visibility-btn group flex items-center gap-1 border-2 border-ink-black px-3 py-1 bg-airmail-blue text-white transition-all active:scale-95" data-state="public">
+<span class="material-symbols-outlined text-sm">public</span>
+<span class="font-label-caps text-label-caps">PUBLIC</span>
+</button>
+<!-- Unlisted Stamp -->
+<button class="visibility-btn group flex items-center gap-1 border-2 border-ink-black px-3 py-1 bg-transparent text-ink-black hover:bg-surface-dim transition-all active:scale-95" data-state="unlisted">
+<span class="material-symbols-outlined text-sm">visibility_off</span>
+<span class="font-label-caps text-label-caps">UNLISTED</span>
+</button>
+<!-- Private Stamp -->
+<button class="visibility-btn group flex items-center gap-1 border-2 border-ink-black px-3 py-1 bg-transparent text-ink-black hover:bg-surface-dim transition-all active:scale-95" data-state="private">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span class="font-label-caps text-label-caps">PRIVATE</span>
+</button>
+</div>
+</div>
+<!-- Counter & Submit -->
+<div class="flex items-stretch">
+<div class="px-6 flex items-center border-r-2 border-ink-black bg-paper-cream">
+<span class="font-headline-md text-headline-md" id="char-counter">280</span>
+</div>
+<button class="bg-stamp-red text-white font-headline-lg text-headline-lg px-12 py-6 uppercase tracking-widest hover:bg-secondary active:translate-y-1 transition-all flex items-center gap-3" id="send-btn">
+                        SEND
+                        <span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</footer>
+<!-- Stamp Decoration -->
+<div class="absolute bottom-32 -right-8 w-40 h-40 opacity-10 pointer-events-none rotate-12">
+<div class="border-4 border-ink-black rounded-full w-full h-full flex items-center justify-center">
+<span class="font-headline-lg text-ink-black text-center">APPROVED<br/>FOR<br/>TRANSIT</span>
+</div>
+</div>
+</main>
+<!-- Close Button (External to Telegram for UI clarity) -->
+<button class="absolute -top-12 right-0 text-white flex items-center gap-2 hover:text-paper-cream transition-colors group" onclick="window.history.back()">
+<span class="font-label-caps text-label-caps">ABORT MESSAGE</span>
+<span class="material-symbols-outlined bg-ink-black border border-white/20 p-1 rounded-full group-hover:rotate-90 transition-transform">close</span>
+</button>
+</div>
+<!-- Secondary Atmospheric Elements -->
+<div class="fixed bottom-10 left-10 z-0 pointer-events-none hidden lg:block opacity-40">
+<div class="w-64 h-80 bg-paper-cream border border-ink-black/20 -rotate-6 relative telegram-shadow">
+<div class="w-full h-full bg-cover bg-center" data-alt="A vintage ledger book with hand-written entries and ink stains, sitting on a dark wooden desk under a warm yellow lamp light. The scene is shot from a top-down perspective, emphasizing the tactile texture of the yellowed paper and the precise alignment of the columns. The aesthetic is nostalgic, cinematic, and authoritative." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFtYwAOCb7Cm0cil-xa3ElulzFavag7Oq6m0p9vsgfDXZD_gH9mbsvmDGnCflKrqsR7dtUQjeKBHQ_W14PLrPIrmhoszlrDutobBO4mWZP8Rd4m7t2NJschsh05i2kJvduAcGeSOuepVcYz-_J2MMue8pqGORfxfWCeQsyBbALGoQ9uJ9VyopgEEwruGl7UZKBwKQ5PZB-28NM1v0V9tcQm1rGzes-6SuTR4kqyEVrTkmcp0oi4d1nz-8HVmXS2IYfDsaZoVOK60fX')"></div>
+</div>
+</div>
+<script>
+        // Character Counting Logic
+        const textarea = document.getElementById('telegram-body');
+        const counter = document.getElementById('char-counter');
+        const sendBtn = document.getElementById('send-btn');
+
+        textarea.addEventListener('input', () => {
+            const remaining = 280 - textarea.value.length;
+            counter.textContent = remaining;
+            
+            if (remaining < 0) {
+                counter.classList.add('text-stamp-red');
+                sendBtn.disabled = true;
+                sendBtn.style.opacity = '0.5';
+            } else {
+                counter.classList.remove('text-stamp-red');
+                sendBtn.disabled = false;
+                sendBtn.style.opacity = '1';
+            }
+        });
+
+        // Visibility Button Selection Logic
+        const visButtons = document.querySelectorAll('.visibility-btn');
+        visButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                visButtons.forEach(b => {
+                    b.classList.remove('bg-airmail-blue', 'text-white');
+                    b.classList.add('bg-transparent', 'text-ink-black');
+                });
+                btn.classList.remove('bg-transparent', 'text-ink-black');
+                btn.classList.add('bg-airmail-blue', 'text-white');
+            });
+        });
+
+        // Subtle Micro-interaction for the "Send" effect
+        sendBtn.addEventListener('click', () => {
+            const container = document.querySelector('main');
+            container.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            container.style.transform = 'translateY(-120vh) rotate(-5deg)';
+            container.style.opacity = '0';
+            
+            setTimeout(() => {
+                alert('TELEGRAM DISPATCHED TO GLOBAL REGISTRY.');
+                window.location.reload();
+            }, 600);
+        });
+
+        // Rule line alignment on scroll/input
+        textarea.addEventListener('scroll', () => {
+            textarea.style.backgroundPositionY = `-${textarea.scrollTop}px`;
+        });
+    </script>
+</body></html>
