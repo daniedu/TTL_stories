@@ -18,12 +18,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `Expires in ${timeLeft}m`;
 
   return {
-    title: `TTL Stories — ${story.authorName || "Anonymous"}`,
+    title: `TTLive — ${story.authorName || "Anonymous"}`,
     description: story.content.slice(0, 160),
     openGraph: {
-      title: `TTL Stories — ${story.authorName || "Anonymous"}`,
+      title: `TTLive — ${story.authorName || "Anonymous"}`,
       description: story.content.slice(0, 160),
-      siteName: "TTL Stories",
+      siteName: "TTLive",
       type: "article",
       publishedTime: story.createdAt.seconds
         ? new Date(story.createdAt.seconds * 1000).toISOString()
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `TTL Stories — ${story.authorName || "Anonymous"}`,
+      title: `TTLive — ${story.authorName || "Anonymous"}`,
       description: story.content.slice(0, 160),
       images: [`/story/${id}/opengraph-image`],
     },

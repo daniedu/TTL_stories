@@ -58,7 +58,7 @@ export default async function handler(req: NextRequest) {
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                TTL Stories
+                TTLive
               </div>
 
               <div
@@ -154,7 +154,7 @@ function fallback() {
         }}
       >
         <div style={{ fontSize: 72, marginBottom: 24 }}>🗺️</div>
-        <div style={{ color: "#60a5fa", marginBottom: 8 }}>TTL Stories</div>
+        <div style={{ color: "#60a5fa", marginBottom: 8 }}>TTLive</div>
         <div style={{ fontSize: 24, color: "#6b7280", fontWeight: 400 }}>
           Ephemeral location-based stories
         </div>

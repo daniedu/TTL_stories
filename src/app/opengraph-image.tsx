@@ -26,7 +26,7 @@ export default async function handler() {
             marginBottom: 12,
           }}
         >
-          TTL Stories
+          TTLive
         </div>
         <div style={{ fontSize: 26, color: "#9ca3af" }}>
           Ephemeral location-based stories

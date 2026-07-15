@@ -3,6 +3,7 @@
 import type { Story } from "@/types";
 import { deleteStory, reportStory } from "@/lib/stories";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 function copyShareLink(id: string) {
   const url = `${window.location.origin}/story/${id}`;
@@ -29,7 +30,7 @@ function StoryCard({ story, userId }: { story: Story; userId: string | null }) {
 
   return (
     <div
-      className={`bg-paper-cream border-2 border-ink-black p-4 md:p-6 shadow-[4px_4px_0px_0px_#1A1A1B] relative group cursor-pointer transition-all hover:shadow-[2px_2px_0px_0px_#1A1A1B] hover:translate-x-0.5 hover:translate-y-0.5 ${
+      className={`bg-paper-cream border-2 border-ink-black p-4 md:p-6 shadow-[4px_4px_0px_0px_#1A1A1B] relative group transition-all hover:shadow-[2px_2px_0px_0px_#1A1A1B] hover:translate-x-0.5 hover:translate-y-0.5 ${
         expired ? "opacity-80 grayscale" : ""
       }`}
     >
@@ -144,6 +145,8 @@ export default function StoryFeed({
   userId: string | null;
   compact?: boolean;
 }) {
+  const router = useRouter();
+
   if (stories.length === 0) {
     return (
       <div className="flex items-center justify-center py-12 font-body-md text-postmark-gray">
@@ -158,6 +161,7 @@ export default function StoryFeed({
         {stories.map((story) => (
           <div
             key={story.id}
+            onClick={() => router.push(`/story/${story.id}`)}
             className="p-4 border-b-2 border-ink-black hover:bg-surface-bright transition-colors relative group cursor-pointer"
           >
             <div className="absolute top-3 right-3 w-9 h-11 border-2 border-dashed border-ink-black flex flex-col items-center justify-center bg-white -rotate-3 group-hover:rotate-3 transition-transform opacity-60">

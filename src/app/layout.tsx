@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Courier_Prime, JetBrains_Mono, Space_Mono } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import "./globals.css";
 import RegisterSW from "@/components/RegisterSW";
 
@@ -25,30 +27,30 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TTL Stories",
-  description: "Ephemeral location-based stories",
+  title: "TTLive",
+  description: "Drop moments on a map. Share them or keep them. No backups. No traces. Just now.",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://ttl-stories.vercel.app",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://ttlive.vercel.app",
   ),
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "TTL Stories",
+    title: "TTLive",
   },
   openGraph: {
-    title: "TTL Stories",
-    description: "Ephemeral location-based stories",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://ttl-stories.vercel.app",
-    siteName: "TTL Stories",
+    title: "TTLive",
+    description: "Drop moments on a map. Share them or keep them. No backups. No traces. Just now.",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://ttlive.vercel.app",
+    siteName: "TTLive",
     images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "TTL Stories",
-    description: "Ephemeral location-based stories",
+    title: "TTLive",
+    description: "Drop moments on a map. Share them or keep them. No backups. No traces. Just now.",
     images: ["/opengraph-image"],
   },
   other: {
@@ -60,11 +62,13 @@ export const viewport: Viewport = {
   themeColor: "#00416A",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const messages = await getMessages();
+
   return (
     <html
       lang="en"
@@ -75,7 +79,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icons/icon.svg" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" />
       </head>
-      <body className="overscroll-none">{children}</body>
+      <body className="overscroll-none">
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }

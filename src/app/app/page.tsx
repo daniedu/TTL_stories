@@ -68,7 +68,7 @@ function AppInner() {
           </button>
           <Link href="/app">
             <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-ink-black uppercase tracking-tighter">
-              TTL STORIES
+              TTLive
             </h1>
           </Link>
         </div>
@@ -169,7 +169,10 @@ function AppInner() {
             <StoryFeed stories={stories} userId={user?.uid ?? null} compact />
           </div>
           <div className="p-4 bg-ink-black text-white text-center shrink-0">
-            <button className="font-label-caps text-label-caps tracking-widest hover:text-airmail-blue transition-colors">
+            <button
+              onClick={() => { setTab("feed"); setMode("global"); }}
+              className="font-label-caps text-label-caps tracking-widest hover:text-airmail-blue transition-colors"
+            >
               VIEW ALL ARCHIVES
             </button>
           </div>
@@ -247,15 +250,16 @@ function AppInner() {
             </svg>
             <span className="font-body-md text-body-md">LEDGER</span>
           </Link>
-          <a
-            href="#"
+          <Link
+            href="/app"
+            onClick={() => { setDrawerOpen(false); setTab("feed"); setMode("global"); }}
             className="flex items-center gap-4 px-6 py-4 text-ink-black hover:bg-surface-container-highest transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
             </svg>
             <span className="font-body-md text-body-md">ARCHIVE</span>
-          </a>
+          </Link>
         </nav>
         <div className="p-4 border-t-2 border-ink-black text-center">
           <button

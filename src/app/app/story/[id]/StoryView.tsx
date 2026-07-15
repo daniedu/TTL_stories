@@ -72,7 +72,7 @@ export default function StoryView({ story }: { story: Story }) {
             arrow_back
           </Link>
           <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-ink-black uppercase tracking-tighter">
-            TTL STORIES
+            TTLive
           </h1>
         </div>
         <span className="font-label-caps text-label-caps text-ink-black/60">

@@ -1,0 +1,125 @@
+{
+  "landing": {
+    "title": "TTLive",
+    "tagline": "Your life. A live journal. Gone tomorrow.",
+    "subtitle": "Drop moments on a map. Share them or keep them. No backups. No traces. Just now.",
+    "cta_enter": "Enter the Archive",
+    "cta_live": "Start Now",
+    "feature_ephemeral_title": "Ephemeral",
+    "feature_ephemeral_desc": "Stories vanish in 24h. Like a telegram from the past.",
+    "feature_journey_title": "Journeys",
+    "feature_journey_desc": "Map your private moments. A cartography of memories.",
+    "feature_private_title": "Private or Public",
+    "feature_private_desc": "Share with the world or keep it for yourself. Your choice.",
+    "footer": "TTLive — CORRESPONDENCE POST",
+    "est": "EST. 2024"
+  },
+  "app": {
+    "title": "TTLive",
+    "menu": {
+      "postbox": "POSTBOX",
+      "telegrams": "TELEGRAMS",
+      "ledger": "LEDGER",
+      "archive": "ARCHIVE"
+    },
+    "tabs": {
+      "map": "MAP",
+      "feed": "FEED",
+      "global": "GLOBAL",
+      "profile": "PROFILE"
+    },
+    "compose": {
+      "form_no": "FORM NO. 72-B",
+      "telegram": "TELEGRAM CONVEYANCE",
+      "from": "FROM:",
+      "loc": "LOC:",
+      "message": "MESSAGE CONTENTS (MAX 280 CHARS):",
+      "placeholder": "TYPE YOUR MESSAGE HERE...",
+      "classification": "CLASSIFICATION:",
+      "send": "SEND",
+      "enclose_image": "ENCLOSE IMAGE URL (OPTIONAL)"
+    },
+    "story": {
+      "to": "TO:",
+      "from": "FROM:",
+      "loc": "LOC:",
+      "sent": "SENT:",
+      "the_world": "THE WORLD",
+      "authenticated_by": "AUTHENTICATED BY",
+      "remaining": "remaining",
+      "expired": "EXPIRED",
+      "posted": "POSTED",
+      "back": "BACK"
+    },
+    "feed": {
+      "empty": "No dispatches yet. Tap the map to post one.",
+      "share": "SHARE",
+      "delete": "DELETE",
+      "report": "REPORT",
+      "public": "PUBLIC",
+      "unlisted": "UNLISTED",
+      "private": "PRIVATE",
+      "public_dispatch": "PUBLIC DISPATCH",
+      "unlisted_dispatch": "UNLISTED DISPATCH",
+      "private_dispatch": "PRIVATE DISPATCH",
+      "from": "FROM:",
+      "left": "left",
+      "attachment": "ATTACHMENT"
+    },
+    "profile": {
+      "ledger": "LEDGER",
+      "title": "Personal Journal & Ledger",
+      "active": "ACTIVE",
+      "dispatches": "Dispatches",
+      "active_count": "Active",
+      "expired_count": "Expired",
+      "timeline": "Timeline of Entries",
+      "empty": "No entries yet. Post a story to start your ledger.",
+      "ref_no": "REF NO:",
+      "view_full": "VIEW FULL",
+      "loading": "Loading ledger...",
+      "station_master": "Station Master since the Great Fog of '24"
+    },
+    "drawer": {
+      "close": "CLOSE LEDGER",
+      "est": "EST. 2024",
+      "office": "OFFICE NO."
+    }
+  },
+  "story": {
+    "private_title": "PRIVATE DISPATCH",
+    "private_desc": "You don't have access to this story.",
+    "expired_title": "STORY EXPIRED",
+    "expired_desc": "This story is no longer available.",
+    "dispatch": "DISPATCH",
+    "air_mail": "AIR MAIL",
+    "unlisted": "UNLISTED",
+    "private": "PRIVATE"
+  },
+  "auth": {
+    "anonymous": "ANONYMOUS",
+    "sign_in": "SIGN IN",
+    "sign_out": "SIGN OUT",
+    "create": "CREATE",
+    "create_account": "CREATE ACCOUNT",
+    "register": "REGISTER",
+    "display_name": "Display name",
+    "email": "Email",
+    "password": "Password",
+    "anon": "ANON",
+    "session_active": "Session Active"
+  },
+  "landing_page": {
+    "hero_title": "TTLive",
+    "hero_tagline": "Your life. A live journal. Gone tomorrow.",
+    "hero_subtitle": "Drop moments on a map. Share them or keep them. No backups. No traces. Just now.",
+    "cta_enter": "Enter the Archive",
+    "cta_live": "Start Now",
+    "feature_1_title": "Ephemeral",
+    "feature_1_desc": "Stories vanish in 24h. Like a telegram from the past.",
+    "feature_2_title": "Journeys",
+    "feature_2_desc": "Map your private moments. A cartography of memories.",
+    "feature_3_title": "Private or Public",
+    "feature_3_desc": "Share with the world or keep it for yourself. Your choice."
+  }
+}
