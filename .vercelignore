@@ -1,0 +1,6 @@
+.git
+.gitignore
+.envrc
+devenv.*
+.github
+*.md

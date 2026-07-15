@@ -1,0 +1,17 @@
+{
+  "name": "TTL Stories",
+  "short_name": "TTL",
+  "description": "Ephemeral location-based stories",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#1e3a5f",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
