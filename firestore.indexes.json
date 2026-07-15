@@ -21,9 +21,9 @@
       "collectionGroup": "stories",
       "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "expiresAt", "order": "ASCENDING" },
         { "fieldPath": "visibility", "order": "ASCENDING" },
-        { "fieldPath": "createdAt", "order": "DESCENDING" }
+        { "fieldPath": "createdAt", "order": "DESCENDING" },
+        { "fieldPath": "expiresAt", "order": "DESCENDING" }
       ]
     }
   ],
