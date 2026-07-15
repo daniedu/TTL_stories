@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from "@/lib/auth";
 import { useStories } from "@/hooks/useStories";
+import { getLocationFromTimezone } from "@/lib/timezone-location";
 
 const IS_MOCK = typeof window !== "undefined" && (
   new URLSearchParams(window.location.search).has("mock") ||
@@ -38,9 +39,12 @@ function AppInner() {
       setUserPosition([37.7749, -122.4194]);
       return;
     }
+
+    setUserPosition(getLocationFromTimezone());
+
     navigator.geolocation.getCurrentPosition(
       (pos) => setUserPosition([pos.coords.latitude, pos.coords.longitude]),
-      () => setMode("global"),
+      () => {},
     );
   }, []);
 
