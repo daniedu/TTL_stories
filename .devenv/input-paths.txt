@@ -1,6 +1,0 @@
-/home/work/Projects/TTL_stories/.devenv/bootstrap/bootstrapLib.nix
-/home/work/Projects/TTL_stories/.devenv/bootstrap/default.nix
-/home/work/Projects/TTL_stories/devenv.lock
-/home/work/Projects/TTL_stories/devenv.nix
-/home/work/Projects/TTL_stories/devenv.yaml
-/home/work/Projects/TTL_stories/.env
